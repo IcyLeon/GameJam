@@ -12,6 +12,21 @@ public enum Rarity
 public class ItemsSO : ScriptableObject
 {
     public string ItemName;
-    public Rarity Rarity;
+    public Rarity Rarity = Rarity.COMMON;
     public Sprite ItemSprite;
+    public int StartingIncome;
+    [TextAreaAttribute]
+    public string ItemDescription;
+
+    public string GetRarityTxt()
+    {
+        switch(Rarity)
+        {
+            case Rarity.COMMON:
+                return "Common";
+            case Rarity.UNCOMMON:
+                return "Uncommon";
+        }
+        return "???";
+    }
 }

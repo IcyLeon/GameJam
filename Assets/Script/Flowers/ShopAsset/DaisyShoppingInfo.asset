@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
-  m_Name: Rose
+  m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
+  m_Name: DaisyShoppingInfo
   m_EditorClassIdentifier: 
-  ItemName: Rose
-  Rarity: 0
-  ItemSprite: {fileID: 21300000, guid: 36c35508a3570f94c8346373ad5dfda3, type: 3}
-  StartingIncome: 2
-  ItemDescription: Rose description test
+  Cost: 50
+  itemsSO: {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}

@@ -3,34 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemButton : MonoBehaviour
+public class ItemButton : MonoBehaviour, IPointerClickHandler
 {
     public delegate void onButtonClick(ItemButton item, ItemsSO itemsSO);
     public onButtonClick SendItemButtonInfo;
-    [SerializeField] Button SelectButton;
-    [SerializeField] TextMeshProUGUI CostTxt;
-    private int Cost;
     private ItemsSO itemsSO;
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        SelectButton.onClick.AddListener(ButtonClick);
-        if (CostTxt)
-            CostTxt.text = GetOriginalCost().ToString();
-    }
-
-    public int GetOriginalCost()
-    {
-        return Cost;
-    }
-
-    public void SetCost(int amt)
-    {
-        Cost = amt;
-    }
 
     // Update is called once per frame
     private void ButtonClick()
@@ -46,5 +26,10 @@ public class ItemButton : MonoBehaviour
     public ItemsSO GetItemsSO()
     {
         return itemsSO;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        ButtonClick();
     }
 }
