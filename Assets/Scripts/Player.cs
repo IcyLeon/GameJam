@@ -38,8 +38,6 @@ public class Player : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         sliderReference.SetActive(false);
-        transform.position = new Vector3(0, 0, 0);
-        transform.rotation = new Quaternion(0,0,0,0);
     } 
 
     private void Update()
@@ -51,7 +49,7 @@ public class Player : MonoBehaviour
                     if (startGathering)
                     {
                         playerState = PlayerState.GETFLOWER1;
-                        targetPos = OrderSystem.instance.GetFlowerBoothLocation(orderToFollow.flower1);
+                        targetPos = OrderSystem.GetInstance().GetFlowerBoothLocation(orderToFollow.flower1);
                         navMeshAgent.SetDestination(targetPos);
                         startGathering = false;
                     }
@@ -127,27 +125,27 @@ public class Player : MonoBehaviour
                         {
                             case PlayerState.GETFLOWER1:
                                 {
-                                    targetPos = OrderSystem.instance.GetFlowerBoothLocation(orderToFollow.flower1);
+                                    targetPos = OrderSystem.GetInstance().GetFlowerBoothLocation(orderToFollow.flower1);
                                     break;
                                 }
                             case PlayerState.GETFLOWER2:
                                 {
-                                    targetPos = OrderSystem.instance.GetFlowerBoothLocation(orderToFollow.flower2);
+                                    targetPos = OrderSystem.GetInstance().GetFlowerBoothLocation(orderToFollow.flower2);
                                     break;
                                 }
                             case PlayerState.GETFLOWER3:
                                 {
-                                    targetPos = OrderSystem.instance.GetFlowerBoothLocation(orderToFollow.flower3);
+                                    targetPos = OrderSystem.GetInstance().GetFlowerBoothLocation(orderToFollow.flower3);
                                     break;
                                 }
                             case PlayerState.GETWRAP:
                                 {
-                                    targetPos = OrderSystem.instance.GetWrapLocation();
+                                    targetPos = OrderSystem.GetInstance().GetWrapLocation();
                                     break;
                                 }
                             case PlayerState.MOVETOCOUNTER:
                                 {
-                                    targetPos = OrderSystem.instance.GetCounterLocation();
+                                    targetPos = OrderSystem.GetInstance().GetCounterLocation();
                                     break;
                                 }
                         }

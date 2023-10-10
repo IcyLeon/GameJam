@@ -5,7 +5,6 @@ using UnityEngine;
 public class Station : InteractableObjects
 {
     [SerializeField] SpriteRenderer spriteRenderer;
-    private FlowerTypes flowerType;
     private int Income;
 
     private void Start()
@@ -33,22 +32,5 @@ public class Station : InteractableObjects
     public ItemsSO GetItemsSO()
     {
         return itemsSO;
-    }
-
-    /// <summary>
-    /// Set The flowerType of the station
-    /// </summary>
-    public void SetFlowerType(FlowerTypes flowerType)
-    {
-        this.flowerType = flowerType;
-    }
-
-    /// <summary>
-    /// return the type of flower that the booth contains
-    /// </summary>
-    /// <returns></returns>
-    public FlowerTypes GetFlowerType()
-    {
-        return flowerType;
     }
 }
