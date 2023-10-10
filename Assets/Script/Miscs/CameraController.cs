@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using System;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Camera CameraUI;
-    [SerializeField] SpriteRenderer ground;
+    [SerializeField] MouseCtrl mouseCtrl;
+    [SerializeField] Tilemap Tilemap;
     private const float MoveSpeed = 50f;
     private const float MoveSmoothLerp = 3f;
     private Camera MainCamera;
     private Vector3 CameraPosition;
     private Vector3 Target;
+    Vector3 PreviousTilemapTRPos;
+    Vector3 PreviousTilemapBLPos;
+
 
     // Start is called before the first frame update
     void Start()
     {
         MainCamera = Camera.main;
-        CameraPosition = Vector3.zero;
+        CameraPosition = Target = Vector3.zero;
+        Target.z = -10f;
+        mouseCtrl.MouseOnDragEvent += MouseMove;
     }
 
     void MouseMove()
@@ -32,9 +40,7 @@ public class CameraController : MonoBehaviour
         if (Target != transform.position)
             CameraPosition = Vector3.Lerp(CameraPosition, Target, MoveSmoothLerp * Time.deltaTime);
 
-        MouseMove();
         UpdateBounds();
-
         transform.position = CameraPosition;
     }
 
@@ -51,26 +57,39 @@ public class CameraController : MonoBehaviour
         Vector3 bl = CameraPosition - (rightVec * w) - (UpVec * h);
         Vector3 br = CameraPosition + (rightVec * w) - (UpVec * h);
 
-        float left = ground.sprite.bounds.max.x * 0.5f + w;
-        float up = ground.sprite.bounds.max.y * 0.5f + h;
+        Vector3Int trTilemap = Tilemap.WorldToCell(tr);
+        Vector3Int blTilemap = Tilemap.WorldToCell(bl);
 
-        Debug.Log(ground.sprite.bounds);
+        if (!Tilemap.HasTile(trTilemap))
+        {
+            if (tr.y > PreviousTilemapTRPos.y)
+            {
+                CameraPosition += -UpVec * Mathf.Abs(tr.y - (PreviousTilemapTRPos.y));
+            }
+            if (tr.x > PreviousTilemapTRPos.x)
+            {
+                CameraPosition += -rightVec * Mathf.Abs(tr.x - (PreviousTilemapTRPos.x));
+            }
+        }
+        else
+        {
+            PreviousTilemapTRPos = tr;
+        }
 
-        if (tr.x > ground.transform.position.x + left)
+        if (!Tilemap.HasTile(blTilemap))
         {
-            CameraPosition += -rightVec * Mathf.Abs(tr.x - (ground.transform.position.x + left));
+            if (bl.x < PreviousTilemapBLPos.x)
+            {
+                CameraPosition += rightVec * Mathf.Abs(bl.x - (PreviousTilemapBLPos.x));
+            }
+            if (bl.y < PreviousTilemapBLPos.y)
+            {
+                CameraPosition += UpVec * Mathf.Abs(bl.y - (PreviousTilemapBLPos.y));
+            }
         }
-        if (tl.x < ground.transform.position.x - left)
+        else
         {
-            CameraPosition += rightVec * Mathf.Abs((ground.transform.position.x - left) - tl.x);
-        }
-        if (tr.y > ground.transform.position.y + up)
-        {
-            CameraPosition += -UpVec * Mathf.Abs(tr.y - (ground.transform.position.y + up));
-        }
-        if (br.y < ground.transform.position.y - up)
-        {
-            CameraPosition += UpVec * Mathf.Abs((ground.transform.position.y - up) - br.y);
+            PreviousTilemapBLPos = bl;
         }
     }
 }
