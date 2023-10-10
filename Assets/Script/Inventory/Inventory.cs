@@ -14,4 +14,9 @@ public class Inventory
     {
         Coins = amt;
     }
+
+    public Inventory(int Coins = 0)
+    {
+        this.Coins = Coins;
+    }
 }

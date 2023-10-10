@@ -14,6 +14,12 @@ public class InventoryManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        inventory = new Inventory(1000);
+        onCurrencyValueChanged?.Invoke();
+    }
+
     public static InventoryManager GetInstance()
     {
         return instance;
@@ -28,5 +34,13 @@ public class InventoryManager : MonoBehaviour
     {
         inventory.SetCoins(inventory.GetCoins() - amt);
         onCurrencyValueChanged?.Invoke();
+    }
+
+    public int GetCoins()
+    {
+        if (inventory == null)
+            return 0;
+
+        return inventory.GetCoins();
     }
 }
