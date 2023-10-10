@@ -3,6 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Rarity
+{
+    COMMON,
+    UNCOMMON
+}
+
+public enum FlowerTypes
+{
+    NONE,
+    ROSE,
+    TULIP,
+    DAISY,
+    BABY_BREATH,
+    LILY_OF_THE_VALLEY,
+    ORCHID,
+    LAVENDER,
+    MOONFLOWER,
+    PEONY,
+}
+
+public enum WrapTypes
+{
+    NONE,
+    WRAP_1,
+}
+
 public class AssetManager : MonoBehaviour
 {
     [Serializable]

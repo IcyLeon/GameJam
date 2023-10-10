@@ -55,7 +55,9 @@ public class ShopManager : MonoBehaviour
             InventoryManager.GetInstance().SubtractCoins(currentShopItemButtonSelected.GetOriginalCost());
             GameObject go = Instantiate(currentShopItemButtonSelected.GetStationPrefab());
             go.GetComponent<Station>().SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
-
+            go.GetComponent<Station>().SetFlowerType(currentShopItemButtonSelected.GetItemsSO().flowerType);
+            go.transform.position = currentShopItemButtonSelected.GetItemsSO().pos;
+            OrderSystem.instance.AddStationToList(go);
         }
         PurchaseBtn.gameObject.SetActive(currentShopItemButtonSelected != null && !currentShopItemButtonSelected.isPurchased());
     }

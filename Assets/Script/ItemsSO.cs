@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Rarity
-{
-    COMMON,
-    UNCOMMON
-}
-
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/ItemsSO", order = 1)]
 public class ItemsSO : ScriptableObject
 {
@@ -15,6 +9,8 @@ public class ItemsSO : ScriptableObject
     public Rarity Rarity = Rarity.COMMON;
     public Sprite ItemSprite;
     public int StartingIncome;
+    public FlowerTypes flowerType;
+    public Vector3 pos;
     [TextAreaAttribute]
     public string ItemDescription;
 
