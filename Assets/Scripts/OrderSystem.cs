@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class OrderSystem : MonoBehaviour
 {
-    public static OrderSystem instance;
+    private static OrderSystem instance;
+
+    public static OrderSystem GetInstance()
+    {
+        return instance;
+    }
     private void Awake()
     {
         instance = this;
@@ -35,10 +40,6 @@ public class OrderSystem : MonoBehaviour
     /// </summary>
     [SerializeField] Player tempPlayer;
 
-    //private void Start()
-    //{
-
-    //}
 
     private void Update()
     {
@@ -59,7 +60,7 @@ public class OrderSystem : MonoBehaviour
     {
         for (int i = 0; i < flowerBoothLocation.Count; i++)
         {
-            if (flowerBoothLocation[i].GetFlowerType() == flowerType)
+            if (flowerBoothLocation[i].GetItemsSO().flowerType == flowerType)
             {
                 return flowerBoothLocation[i].transform.position;
             }
@@ -87,9 +88,9 @@ public class OrderSystem : MonoBehaviour
     }
 
 
-    public void AddStationToList(GameObject station)
+    public void AddStationToList(Station station)
     {
-        flowerBoothLocation.Add(station.GetComponent<Station>());
+        flowerBoothLocation.Add(station);
     }
 }
 
