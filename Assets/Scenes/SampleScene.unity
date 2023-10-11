@@ -9702,11 +9702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2196306021615669677, guid: 3666adce39f7b20439aa98cecd9b162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.34
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 2196306021615669677, guid: 3666adce39f7b20439aa98cecd9b162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.96
+      value: 6.49
       objectReference: {fileID: 0}
     - target: {fileID: 2196306021615669677, guid: 3666adce39f7b20439aa98cecd9b162e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12844,6 +12844,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257231067}
   m_CullTransparentMesh: 1
+--- !u!1 &1264610159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264610160}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1264610160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264610159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 3, z: 0.019363403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1272713304
 GameObject:
   m_ObjectHideFlags: 0

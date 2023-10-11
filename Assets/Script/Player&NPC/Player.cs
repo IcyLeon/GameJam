@@ -35,15 +35,15 @@ public class Player : MoveableObjects
 
     protected override void Update()
     {
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    pos.z = 0;
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pos.z = 0;
 
-        //    Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-        //    Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
-        //    MoveMoveableObjects_PathFind(CurrentPos, EndPos);
-        //}
+            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+            Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
+            MoveMoveableObjects_PathFind(CurrentPos, EndPos);
+        }
 
         switch (playerState)
         {
@@ -51,12 +51,13 @@ public class Player : MoveableObjects
                 {
                     if (OrderSystem.GetInstance().GetOrder() != null)
                     {
-                        Transform ClosestWaypoint = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothStation(FlowerTypes.PEONY));
+                        Transform ClosestWaypoint = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothStation(FlowerTypes.TULIP));
                         if (ClosestWaypoint != null)
                         {
-                            StartOrder(OrderSystem.GetInstance().GetOrder());
+                            //StartOrder(OrderSystem.GetInstance().GetOrder());
                             Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
                             Vector2Int ClosestWaypointPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).x, mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).y);
+                            Debug.Log(ClosestWaypointPos);
                             MoveMoveableObjects_PathFind(CurrentPos, ClosestWaypointPos);
                             playerState = PlayerState.COLLECTING;
                         }
@@ -77,10 +78,10 @@ public class Player : MoveableObjects
         if (station.GetAllWaypoints().Length == 0)
             return null;
 
-        Transform current = station.GetAllWaypoints()[0];
+        Transform current = station.GetAllWaypoints()[1];
         float closestDistance = Vector3.Distance(transform.position, current.position); // Initialize with the distance to the first waypoint
 
-        for (int i = 0; i < station.GetAllWaypoints().Length; i++)
+        for (int i = 1; i < station.GetAllWaypoints().Length; i++)
         {
             float distance = Vector3.Distance(transform.position, station.GetAllWaypoints()[i].position);
 

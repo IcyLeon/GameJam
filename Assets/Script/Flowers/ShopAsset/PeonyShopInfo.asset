@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
   m_Name: PeonyShopInfo
   m_EditorClassIdentifier: 
-  Cost: 725000000
+  Cost: 0
   itemsSO: {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
