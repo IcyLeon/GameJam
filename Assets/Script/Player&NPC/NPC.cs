@@ -48,7 +48,7 @@ public class NPC : MoveableObjects
     }
     public IEnumerator Test(NPCState state)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         if (state == NPCState.LEAVING)
             QueueSystem.GetInstance().LeaveNPCFromQueue(this);
         SetState(state);
