@@ -86,6 +86,8 @@ public class ShopManager : MonoBehaviour
                 Station station = go.GetComponent<Station>();
                 station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
 
+                InventoryManager.GetInstance().AddItemsSO(currentShopItemButtonSelected.GetItemsSO());
+
                 //OrderSystem.GetInstance().AddStationToList(station);
             }
         }
