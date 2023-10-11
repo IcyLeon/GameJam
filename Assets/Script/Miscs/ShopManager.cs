@@ -4,7 +4,6 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
@@ -86,7 +85,6 @@ public class ShopManager : MonoBehaviour
                 GameObject go = Instantiate(currentShopItemButtonSelected.GetStationPrefab());
                 Station station = go.GetComponent<Station>();
                 station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
-
                 OrderSystem.GetInstance().AddStationToList(station);
             }
         }

@@ -39,6 +39,8 @@ public class AssetManager : MonoBehaviour
         public ItemsSO itemsSO;
     }
     [SerializeField] BoothInfo[] BoothInfoList;
+    [SerializeField] ItemsSO[] ItemSOList; 
+
     public event Action onSelectedClick;
     private Station SelectedStation;
 
@@ -116,4 +118,29 @@ public class AssetManager : MonoBehaviour
             return currencyAmt.ToString();
         }
     }
+
+    public ItemsSO[] GetItemsSOList()
+    {
+        return ItemSOList;
+    }
+
+    public ItemsSO GetItemsSOByFlowerTypes(FlowerTypes flowerType)
+    {
+        for(int i = 0; i < GetItemsSOList().Length; i++)
+        {
+            if (flowerType == GetItemsSOList()[i].flowerType)
+                return GetItemsSOList()[i];
+        }
+        return null;
+    }
+    //public ItemsSO GetItemsSOByFlowerTypes(WrapTypes wrapTypes)
+    //{
+    //    for (int i = 0; i < GetItemsSOList().Length; i++)
+    //    {
+    //        if (wrapTypes == GetItemsSOList()[i].)
+    //            return GetItemsSOList()[i];
+    //    }
+    //    return null;
+    //}
+
 }
