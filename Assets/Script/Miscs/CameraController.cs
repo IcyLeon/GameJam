@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class CameraController : MonoBehaviour
 
     void MouseMove()
     {
-        Vector2 MouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        Vector2 MouseMovement = Input.GetTouch(0).deltaPosition;
+        MouseMovement = new Vector2(MouseMovement.x / Screen.width,
+                                   MouseMovement.y / Screen.height) * 10f;
         Target = CameraPosition - (((transform.up * MouseMovement.y) + (transform.right * MouseMovement.x)) * MoveSpeed);
         Target.z = -10f;
     }
