@@ -24,6 +24,7 @@ public class NPC : MoveableObjects
 
     protected override void Start()
     {
+        base.Start();
         togglePanel(false);
         state = NPCState.MOVE_TO_QUEUE;
         RandomGenerateItem();

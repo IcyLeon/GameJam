@@ -37,7 +37,7 @@ public class AssetManager : MonoBehaviour
     {
         public Sprite BoothSprite;
         public ItemsSO itemsSO;
-        public Transform pos;
+        public Station station;
     }
     [SerializeField] BoothInfo[] BoothInfoList;
     [SerializeField] ItemsSO[] ItemSOList; 
@@ -93,14 +93,19 @@ public class AssetManager : MonoBehaviour
         return null;
     }
 
-    public Transform GetBoothPos(ItemsSO itemsSO)
+    public Station GetStation(ItemsSO itemsSO)
     {
         for (int i = 0; i < BoothInfoList.Length; i++)
         {
             if (BoothInfoList[i].itemsSO == itemsSO)
-                return BoothInfoList[i].pos;
+                return BoothInfoList[i].station;
         }
         return null;
+    }
+
+    public BoothInfo[] GetBoothInfo()
+    {
+        return BoothInfoList;
     }
 
     public string AdjustCurrencyDisplay(int currencyAmt)

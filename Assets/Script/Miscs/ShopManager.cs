@@ -82,13 +82,10 @@ public class ShopManager : MonoBehaviour
 
             if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.FLOWER)
             {
-                GameObject go = Instantiate(currentShopItemButtonSelected.GetStationPrefab());
-                Station station = go.GetComponent<Station>();
+                Station station = AssetManager.GetInstance().GetStation(currentShopItemButtonSelected.GetItemsSO());
                 station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
-                station.transform.SetParent(AssetManager.GetInstance().GetBoothPos(currentShopItemButtonSelected.GetItemsSO()));
-                station.transform.localPosition = new Vector3(0, 0, 0);
+                station.gameObject.SetActive(true);
                 OrderSystem.GetInstance().AddStationToList(station);
-
                 InventoryManager.GetInstance().AddItemsSO(currentShopItemButtonSelected.GetItemsSO());
 
                 //OrderSystem.GetInstance().AddStationToList(station);

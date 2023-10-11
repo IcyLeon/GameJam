@@ -1,23 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InteractableObjects : MonoBehaviour
 {
     [SerializeField] Button InteractButton;
-    protected ItemsSO itemsSO;
+    private ItemsSO itemsSO;
 
     protected virtual void Awake()
     {
         InteractButton.onClick.AddListener(SelectedInfo);
     }
 
-    public void SetitemsSO(ItemsSO itemsSO)
+    public virtual void SetitemsSO(ItemsSO itemsSO)
     {
         this.itemsSO = itemsSO;
     }
     protected virtual void SelectedInfo()
     {
+    }
+
+    public ItemsSO GetItemsSO()
+    {
+        return itemsSO;
     }
 }

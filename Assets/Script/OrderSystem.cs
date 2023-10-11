@@ -15,6 +15,13 @@ public class OrderSystem : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < AssetManager.GetInstance().GetBoothInfo().Length; i++)
+        {
+            AssetManager.GetInstance().GetBoothInfo()[i].station.gameObject.SetActive(false);
+        }
+    }
 
     /// <summary>
     /// The list that contains all the location for the flower booth
@@ -69,17 +76,17 @@ public class OrderSystem : MonoBehaviour
     /// <summary>
     /// Return the position at which the flower type is at
     /// </summary>
-    public Vector3 GetFlowerBoothLocation(FlowerTypes flowerType)
+    public Station GetFlowerBoothStation(FlowerTypes flowerType)
     {
         for (int i = 0; i < flowerBoothLocation.Count; i++)
         {
             if (flowerBoothLocation[i].GetItemsSO().flowerType == flowerType)
             {
-                return flowerBoothLocation[i].transform.position;
+                return flowerBoothLocation[i];
             }
         }
 
-        return Vector3.zero;
+        return null;
     }
 
     /// <summary>

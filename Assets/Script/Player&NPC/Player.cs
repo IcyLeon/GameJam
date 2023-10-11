@@ -15,7 +15,6 @@ public class Player : MoveableObjects
     private OrderInformation currentOrder;
     private PlayerState playerState;
     private Vector3 targetPos;
-    private MapManager mapManager;
 
     private enum PlayerState
     {
@@ -29,7 +28,6 @@ public class Player : MoveableObjects
 
     protected override void Start()
     {
-        mapManager = MapManager.GetInstance();
         base.Start();
         playerState = PlayerState.IDLE;
         sliderReference.SetActive(false);
@@ -37,15 +35,15 @@ public class Player : MoveableObjects
 
     protected override void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 0;
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    pos.z = 0;
 
-            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-            Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
-            MoveMoveableObjects_PathFind(CurrentPos, EndPos);
-        }
+        //    Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+        //    Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
+        //    MoveMoveableObjects_PathFind(CurrentPos, EndPos);
+        //}
 
         switch (playerState)
         {
@@ -53,11 +51,15 @@ public class Player : MoveableObjects
                 {
                     if (OrderSystem.GetInstance().GetOrder() != null)
                     {
-                        StartOrder(OrderSystem.GetInstance().GetOrder());
-                        Vector2Int pos = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothLocation(FlowerTypes.ROSE));
-                        Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-                        MoveMoveableObjects_PathFind(CurrentPos, pos);
-                        playerState = PlayerState.COLLECTING;
+                        Transform ClosestWaypoint = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothStation(FlowerTypes.PEONY));
+                        if (ClosestWaypoint != null)
+                        {
+                            StartOrder(OrderSystem.GetInstance().GetOrder());
+                            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+                            Vector2Int ClosestWaypointPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).x, mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).y);
+                            MoveMoveableObjects_PathFind(CurrentPos, ClosestWaypointPos);
+                            playerState = PlayerState.COLLECTING;
+                        }
                     }
 
                     break;
@@ -70,31 +72,26 @@ public class Player : MoveableObjects
         }
     }
 
-    Vector2Int CheckNearestFlowerPos(Vector3 stationPos)
+    Transform CheckNearestFlowerPos(Station station)
     {
-        Vector2Int startPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-        Vector2Int endPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(stationPos).x, mapManager.GetMainTileMap().WorldToCell(stationPos).y);
+        if (station.GetAllWaypoints().Length == 0)
+            return null;
 
-        // Create an array to store the paths in all four directions
-        Vector2Int[] directions = new Vector2Int[]
+        Transform current = station.GetAllWaypoints()[0];
+        float closestDistance = Vector3.Distance(transform.position, current.position); // Initialize with the distance to the first waypoint
+
+        for (int i = 0; i < station.GetAllWaypoints().Length; i++)
         {
-        new Vector2Int(endPos.x, endPos.y + 3),  // Up
-        new Vector2Int(endPos.x - 3, endPos.y),  // Left
-        new Vector2Int(endPos.x + 3, endPos.y),  // Right
-        new Vector2Int(endPos.x, endPos.y - 3)   // Down
-        };
+            float distance = Vector3.Distance(transform.position, station.GetAllWaypoints()[i].position);
 
-        List<List<PathFindingNode>> pathLengths = new List<List<PathFindingNode>>();  // Nested list for storing path lengths
-
-        // Calculate the path lengths in all four directions
-        foreach (Vector2Int direction in directions)
-        {
-            var path = MapManager.GetInstance().AStarPathFinding(startPos, direction);
-            pathLengths.Add(path);  // Add the list of path lengths to the nested list
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                current = station.GetAllWaypoints()[i];
+            }
         }
 
-        return directions[GetLowestPathIdx(pathLengths)];
-
+        return current;
     }
 
     private int GetLowestPathIdx(List<List<PathFindingNode>> List)
