@@ -43,14 +43,14 @@ public class OrderSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OrderInformation newOrder = new OrderInformation();
-            newOrder.flower1 = FlowerTypes.ROSE;
-            newOrder.flower2 = FlowerTypes.ROSE;
-            newOrder.flower3 = FlowerTypes.DAISY;
-            tempPlayer.GiveOrder(newOrder);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    OrderInformation newOrder = new OrderInformation();
+        //    newOrder.flower1 = FlowerTypes.ROSE;
+        //    newOrder.flower2 = FlowerTypes.ROSE;
+        //    newOrder.flower3 = FlowerTypes.DAISY;
+        //    tempPlayer.GiveOrder(newOrder);
+        //}
     }
 
     /// <summary>

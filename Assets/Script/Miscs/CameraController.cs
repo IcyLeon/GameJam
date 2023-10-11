@@ -8,7 +8,6 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] Camera CameraUI;
     [SerializeField] MouseCtrl mouseCtrl;
-    [SerializeField] Tilemap Tilemap;
     private const float MoveSpeed = 50f;
     private const float MoveSmoothLerp = 3f;
     private Camera MainCamera;
@@ -57,10 +56,10 @@ public class CameraController : MonoBehaviour
         Vector3 bl = CameraPosition - (rightVec * w) - (UpVec * h);
         Vector3 br = CameraPosition + (rightVec * w) - (UpVec * h);
 
-        Vector3Int trTilemap = Tilemap.WorldToCell(tr);
-        Vector3Int blTilemap = Tilemap.WorldToCell(bl);
+        Vector3Int trTilemap = MapManager.GetInstance().GetMainTileMap().WorldToCell(tr);
+        Vector3Int blTilemap = MapManager.GetInstance().GetMainTileMap().WorldToCell(bl);
 
-        if (!Tilemap.HasTile(trTilemap))
+        if (!MapManager.GetInstance().GetMainTileMap().HasTile(trTilemap))
         {
             if (tr.y > PreviousTilemapTRPos.y)
             {
@@ -76,7 +75,7 @@ public class CameraController : MonoBehaviour
             PreviousTilemapTRPos = tr;
         }
 
-        if (!Tilemap.HasTile(blTilemap))
+        if (!MapManager.GetInstance().GetMainTileMap().HasTile(blTilemap))
         {
             if (bl.x < PreviousTilemapBLPos.x)
             {
