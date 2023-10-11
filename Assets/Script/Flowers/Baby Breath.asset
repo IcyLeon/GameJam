@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
-  m_Name: Rose
+  m_Name: Baby Breath
   m_EditorClassIdentifier: 
-  ItemName: Rose
-  Rarity: 0
-  ItemSprite: {fileID: 21300000, guid: 36c35508a3570f94c8346373ad5dfda3, type: 3}
-  StartingIncome: 2
-  flowerType: 1
+  ItemName: Baby Breath
+  Rarity: 1
+  ItemSprite: {fileID: 0}
+  StartingIncome: 0
+  flowerType: 4
   pos: {x: 0, y: 0, z: 0}
-  ItemDescription: Rose description test
+  ItemDescription: 

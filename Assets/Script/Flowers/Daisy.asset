@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Daisy
   m_EditorClassIdentifier: 
   ItemName: Daisy
-  Rarity: 1
+  Rarity: 0
   ItemSprite: {fileID: 21300000, guid: a1065ad3161e90f4a827730d30a00c67, type: 3}
   StartingIncome: 5
   flowerType: 3
-  pos: {x: 0, y: -4, z: 0}
+  pos: {x: 0, y: 0, z: 0}
   ItemDescription: Daisy test

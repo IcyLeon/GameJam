@@ -6,7 +6,8 @@ using UnityEngine;
 public enum Rarity
 {
     COMMON,
-    UNCOMMON
+    UNCOMMON,
+    RARE,
 }
 
 public enum FlowerTypes
@@ -43,7 +44,7 @@ public class AssetManager : MonoBehaviour
 
     private static AssetManager instance;
     public GameObject StationPrefab;
-    [SerializeField] Color32 CommonColor, RareColor;
+    [SerializeField] Color32 CommonColor, UncommonColor, RareColor;
 
     private void Awake()
     {
@@ -61,6 +62,8 @@ public class AssetManager : MonoBehaviour
             case Rarity.COMMON:
                 return CommonColor;
             case Rarity.UNCOMMON:
+                return UncommonColor;
+            case Rarity.RARE:
                 return RareColor;
         }
         return CommonColor;
@@ -85,5 +88,32 @@ public class AssetManager : MonoBehaviour
                 return BoothInfoList[i].BoothSprite;
         }
         return null;
+    }
+
+    public string AdjustCurrencyDisplay(int currencyAmt)
+    {
+        // If more than Billion
+        if (currencyAmt >= 1000000000)
+        {
+            float displayValue = currencyAmt / 1000000000.0f;
+            return displayValue.ToString("F2") + "b";
+        }
+        // If more than Million
+        else if (currencyAmt >= 1000000)
+        {
+            float displayValue = currencyAmt / 1000000.0f;
+            return displayValue.ToString("F2") + "m";
+        }
+        // If more than Thousand
+        else if (currencyAmt >= 1000)
+        {
+            float displayValue = currencyAmt / 1000.0f;
+            return displayValue.ToString("F2") + "k";
+        }
+
+        else
+        {
+            return currencyAmt.ToString();
+        }
     }
 }

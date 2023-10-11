@@ -16,6 +16,6 @@ public class CurrencyDisplay : MonoBehaviour
     private void onCurrencyChanged()
     {
         if (CoinsTxt)
-            CoinsTxt.text = InventoryManager.GetInstance().GetCoins().ToString();
+            CoinsTxt.text = AssetManager.GetInstance().AdjustCurrencyDisplay(InventoryManager.GetInstance().GetCoins());
     }
 }

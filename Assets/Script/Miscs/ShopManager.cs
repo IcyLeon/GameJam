@@ -8,9 +8,19 @@ using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] ShopPurchaseSO[] StartUpShopList;
+    [Header("Flower Shop Tab")]
+    [SerializeField] ShopPurchaseSO[] FlowerShopList;
+    [SerializeField] Transform FlowerShopContentParent;
+    [SerializeField] Button flowerShopTabButton;
+
+    [Header("Wrapper Shop Tab")]
+    [SerializeField] ShopPurchaseSO[] WrapperShopList;
+    [SerializeField] Transform WrapperShopContentParent;
+    [SerializeField] Button wrapperShopTabButton;
+
+    [Header("Other Shop Related Reference")]
     [SerializeField] Button PurchaseBtn;
-    [SerializeField] Transform ShopContentParent;
+    [SerializeField] TextMeshProUGUI shopTypeDisplay;
     [SerializeField] GameObject ShopItemPrefab;
     private ShopItemButton currentShopItemButtonSelected;
 
@@ -22,17 +32,30 @@ public class ShopManager : MonoBehaviour
     void Awake()
     {
         PurchaseBtn.onClick.AddListener(PurchaseInfo);
-        for (int i = 0; i < StartUpShopList.Length; i++)
+        // Create the flower shop item in the flowerShop list
+        for (int i = 0; i < FlowerShopList.Length; i++)
         {
-            GameObject go = Instantiate(ShopItemPrefab, ShopContentParent);
+            GameObject go = Instantiate(ShopItemPrefab, FlowerShopContentParent);
             ShopItemButton shopitemButton = go.GetComponent<ShopItemButton>();
-            shopitemButton.SetItemSO(StartUpShopList[i].itemsSO);
-            shopitemButton.SetCost(StartUpShopList[i].Cost);
+            shopitemButton.SetItemSO(FlowerShopList[i].itemsSO);
+            shopitemButton.SetCost(FlowerShopList[i].Cost);
+            shopitemButton.SetStationPrefab(AssetManager.GetInstance().StationPrefab);
+            shopitemButton.SendItemButtonInfo += onItemButtonSend;
+        }
+
+        // Create the wrapper shop item in the wrapperShop list
+        for (int i = 0; i < WrapperShopList.Length; i++)
+        {
+            GameObject go = Instantiate(ShopItemPrefab, WrapperShopContentParent);
+            ShopItemButton shopitemButton = go.GetComponent<ShopItemButton>();
+            shopitemButton.SetItemSO(WrapperShopList[i].itemsSO);
+            shopitemButton.SetCost(WrapperShopList[i].Cost);
             shopitemButton.SetStationPrefab(AssetManager.GetInstance().StationPrefab);
             shopitemButton.SendItemButtonInfo += onItemButtonSend;
         }
     }
 
+    // action
     void onItemButtonSend(ItemButton item, ItemsSO itemsSO)
     {
         ShopItemButton shopItemButton = item as ShopItemButton;
@@ -47,23 +70,27 @@ public class ShopManager : MonoBehaviour
         PurchaseBtn.gameObject.SetActive(shopItemButton != null && !shopItemButton.isPurchased());
     }
 
+    // core
     void PurchaseInfo()
     {
         if (isPurchaseable(currentShopItemButtonSelected))
         {
             currentShopItemButtonSelected.Purchased();
             InventoryManager.GetInstance().SubtractCoins(currentShopItemButtonSelected.GetOriginalCost());
-            GameObject go = Instantiate(currentShopItemButtonSelected.GetStationPrefab());
-            Station station = go.GetComponent<Station>();
-            station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
 
-            station.transform.position = currentShopItemButtonSelected.GetItemsSO().pos; // hardcode for now
+            if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.FLOWER)
+            {
+                GameObject go = Instantiate(currentShopItemButtonSelected.GetStationPrefab());
+                Station station = go.GetComponent<Station>();
+                station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
 
-            OrderSystem.GetInstance().AddStationToList(station);
+                OrderSystem.GetInstance().AddStationToList(station);
+            }
         }
         PurchaseBtn.gameObject.SetActive(currentShopItemButtonSelected != null && !currentShopItemButtonSelected.isPurchased());
     }
 
+    // core
     private bool isPurchaseable(ShopItemButton shopItemButton)
     {
         if (shopItemButton == null)
@@ -71,5 +98,10 @@ public class ShopManager : MonoBehaviour
 
         return InventoryManager.GetInstance().GetCoins() >= shopItemButton.GetOriginalCost();
     }
+}
 
+public enum SHOP_TYPE
+{
+    FLOWER,
+    WRAPPER,
 }

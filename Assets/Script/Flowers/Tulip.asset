@@ -17,5 +17,5 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: eb62c82b255df7244b4cba10051cb1e3, type: 3}
   StartingIncome: 10
   flowerType: 2
-  pos: {x: 4, y: 0, z: 0}
+  pos: {x: 0, y: 0, z: 0}
   ItemDescription: Its a Tulip!

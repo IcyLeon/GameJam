@@ -17,7 +17,7 @@ public class ShopItemButton : ItemButton
     {
         PurchaseStatus = false;
         if (CostTxt)
-            CostTxt.text = GetOriginalCost().ToString();
+            CostTxt.text = AssetManager.GetInstance().AdjustCurrencyDisplay(GetOriginalCost());
         if (ItemImage)
             ItemImage.sprite = GetItemsSO().ItemSprite;
     }
@@ -25,7 +25,7 @@ public class ShopItemButton : ItemButton
     public void Purchased()
     {
         PurchaseStatus = true;
-        canvasGroup.alpha = 0.5f;
+        canvasGroup.alpha = 1.0f;
     }
 
     public bool isPurchased()
