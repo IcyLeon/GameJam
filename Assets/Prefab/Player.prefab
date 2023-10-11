@@ -187,7 +187,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2196306021615669677}
   - component: {fileID: 2196306021615669674}
-  - component: {fileID: 2196306021615669679}
   - component: {fileID: 2196306021615669676}
   m_Layer: 0
   m_Name: Player
@@ -252,7 +251,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2f1345817448fa447a664b87cb58e51e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -264,28 +263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!195 &2196306021615669679
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2196306021615669675}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &2196306021615669676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7422413a310b2bd41a178fb6cb567a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 2196306021615669679}
+  moveableObjectsSO: {fileID: 11400000, guid: 44d185de6138a3547bfa0da608b7c972, type: 2}
   sliderReference: {fileID: 2572652209491906889}
   timerSlider: {fileID: 1246459249482822316}
   maxTimer: 1
