@@ -26,12 +26,17 @@ public class InventoryManager : MonoBehaviour
     }
     public void AddCoins(int amt)
     {
+        if (inventory == null)
+            return;
         inventory.SetCoins(inventory.GetCoins() + amt);
         onCurrencyValueChanged?.Invoke();
     }
 
     public void SubtractCoins(int amt)
     {
+        if (inventory == null)
+            return;
+
         inventory.SetCoins(inventory.GetCoins() - amt);
         onCurrencyValueChanged?.Invoke();
     }
@@ -42,5 +47,20 @@ public class InventoryManager : MonoBehaviour
             return 0;
 
         return inventory.GetCoins();
+    }
+
+    public void AddItemsSO(ItemsSO itemSO)
+    {
+        if (inventory == null)
+            return;
+        inventory.AddItemsSO(itemSO);
+    }
+
+    public List<ItemsSO> GetItemsSOList()
+    {
+        if (inventory == null)
+            return null;
+
+        return inventory.GetUnlockItemsListSO();
     }
 }

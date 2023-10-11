@@ -43,14 +43,6 @@ public class QueueSystem : MonoBehaviour
             }
         }
 
-        //if (Input.GetKeyDown(KeyCode.Backspace))
-        //{
-        //    NPC npc = RowsQueue[0].GetFirstInQueue();
-        //    if (npc != null)
-        //    {
-        //        RowsQueue[0].LeaveNPC(npc);
-        //    }
-        //}
     }
 
 
