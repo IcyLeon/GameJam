@@ -22,6 +22,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] Button PurchaseBtn;
     [SerializeField] TextMeshProUGUI shopTypeDisplay;
     [SerializeField] GameObject ShopItemPrefab;
+    [SerializeField] GameObject PurchaseFailedPopUp;
     private ShopItemButton currentShopItemButtonSelected;
 
     [Header("Display Item Infomation")]
@@ -53,6 +54,8 @@ public class ShopManager : MonoBehaviour
             shopitemButton.SetStationPrefab(AssetManager.GetInstance().StationPrefab);
             shopitemButton.SendItemButtonInfo += onItemButtonSend;
         }
+
+        gameObject.SetActive(false);
     }
 
     // action
@@ -87,6 +90,10 @@ public class ShopManager : MonoBehaviour
                 OrderSystem.GetInstance().AddStationToList(station);
             }
         }
+        else
+        {
+            SetPopUpActive(true);
+        }
         PurchaseBtn.gameObject.SetActive(currentShopItemButtonSelected != null && !currentShopItemButtonSelected.isPurchased());
     }
 
@@ -97,6 +104,14 @@ public class ShopManager : MonoBehaviour
             return false;
 
         return InventoryManager.GetInstance().GetCoins() >= shopItemButton.GetOriginalCost();
+    }
+
+    /// <summary>
+    /// Set the popup active or inactive depending on the boolean value supplied
+    /// </summary>
+    public void SetPopUpActive(bool active)
+    {
+        PurchaseFailedPopUp.SetActive(active);
     }
 }
 
