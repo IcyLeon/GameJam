@@ -12,7 +12,8 @@ public class MouseCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
-            MouseOnDragEvent?.Invoke();
+        if (Input.touchCount > 0) 
+            if (Input.GetTouch(0).phase == TouchPhase.Moved && !EventSystem.current.IsPointerOverGameObject())
+                MouseOnDragEvent?.Invoke();
     }
 }
