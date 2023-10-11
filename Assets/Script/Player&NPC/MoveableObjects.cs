@@ -86,7 +86,7 @@ public class MoveableObjects : MonoBehaviour
     private IEnumerator MoveObject_PathFinder(Vector2Int Current, Vector2Int EndPos)
     {
         var path = mapManager.AStarPathFinding(Current, EndPos);
-        float distanceThreshold = 0.1f; // Adjust this value as needed
+        float distanceThreshold = 0.1f; // Adjust this value
 
         while (path.Count > 0)
         {
