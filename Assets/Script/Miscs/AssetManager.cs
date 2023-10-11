@@ -37,6 +37,7 @@ public class AssetManager : MonoBehaviour
     {
         public Sprite BoothSprite;
         public ItemsSO itemsSO;
+        public Transform pos;
     }
     [SerializeField] BoothInfo[] BoothInfoList;
     [SerializeField] ItemsSO[] ItemSOList; 
@@ -88,6 +89,16 @@ public class AssetManager : MonoBehaviour
         {
             if (BoothInfoList[i].itemsSO == itemsSO)
                 return BoothInfoList[i].BoothSprite;
+        }
+        return null;
+    }
+
+    public Transform GetBoothPos(ItemsSO itemsSO)
+    {
+        for (int i = 0; i < BoothInfoList.Length; i++)
+        {
+            if (BoothInfoList[i].itemsSO == itemsSO)
+                return BoothInfoList[i].pos;
         }
         return null;
     }

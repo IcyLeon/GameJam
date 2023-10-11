@@ -13,6 +13,7 @@ public class NPC : MoveableObjects
     List<Item> ItemsList = new();
     private int MaxAmount = 3;
     Coroutine togglePanelDelayCoroutine, ChangeState;
+    private List<FlowerTypes> generatedItemList;
 
     public enum NPCState
     {
@@ -27,6 +28,7 @@ public class NPC : MoveableObjects
         state = NPCState.MOVE_TO_QUEUE;
         RandomGenerateItem();
         SetupItemImages();
+
     }
 
     private void RandomGenerateItem()
@@ -35,7 +37,7 @@ public class NPC : MoveableObjects
         List<ItemsSO> unlockedItemList = InventoryManager.GetInstance().GetItemsSOList();
 
         // List to temporary stored the generated flowerTypes
-        List<FlowerTypes> generatedItemList = new List<FlowerTypes>();
+        generatedItemList = new List<FlowerTypes>();
 
         // Generate a total of 3 different flower type acoording to what player has unlocked
         for (int i = 0; i < MaxAmount; i++)
@@ -127,6 +129,7 @@ public class NPC : MoveableObjects
     private IEnumerator togglePanelDelay(bool active)
     {
         yield return new WaitForSeconds(0.5f);
+        OrderSystem.GetInstance().GenerateNewOrder(generatedItemList);
         togglePanel(active);
     }
 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
   m_Name: LavenderShopInfo
   m_EditorClassIdentifier: 
-  Cost: 240000
+  Cost: 12100000
   itemsSO: {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}

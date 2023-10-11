@@ -85,6 +85,9 @@ public class ShopManager : MonoBehaviour
                 GameObject go = Instantiate(currentShopItemButtonSelected.GetStationPrefab());
                 Station station = go.GetComponent<Station>();
                 station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
+                station.transform.SetParent(AssetManager.GetInstance().GetBoothPos(currentShopItemButtonSelected.GetItemsSO()));
+                station.transform.localPosition = new Vector3(0, 0, 0);
+                OrderSystem.GetInstance().AddStationToList(station);
 
                 InventoryManager.GetInstance().AddItemsSO(currentShopItemButtonSelected.GetItemsSO());
 

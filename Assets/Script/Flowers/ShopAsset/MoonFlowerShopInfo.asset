@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
   m_Name: MoonFlowerShopInfo
   m_EditorClassIdentifier: 
-  Cost: 6900000
+  Cost: 164000000
   itemsSO: {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}

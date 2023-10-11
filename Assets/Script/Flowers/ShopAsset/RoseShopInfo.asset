@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
   m_Name: RoseShopInfo
   m_EditorClassIdentifier: 
-  Cost: 100
+  Cost: 0
   itemsSO: {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
-  StationPrefab: {fileID: 1407387797405926488, guid: 008502f29e3321c41a816994252968a5, type: 3}

@@ -11,77 +11,167 @@ public class Player : MoveableObjects
     [SerializeField] Slider timerSlider;
     [SerializeField] float maxTimer = 1.0f;
 
-    //private OrderInformation orderToFollow;
-    //private OrderInformation currentOrder;
+    private OrderInformation orderToFollow;
+    private OrderInformation currentOrder;
     private PlayerState playerState;
     private Vector3 targetPos;
-
+    private MapManager mapManager;
 
     private enum PlayerState
     {
         IDLE,
         COLLECTING,
-        GETFLOWER1,
-        GETFLOWER2,
-        GETFLOWER3,
+        GETFLOWER,
         GETWRAP,
+        STARTWRAPPING,
         MOVETOCOUNTER,
     }    
 
-    private void Start()
+    protected override void Start()
     {
+        mapManager = MapManager.GetInstance();
+        base.Start();
         playerState = PlayerState.IDLE;
         sliderReference.SetActive(false);
-    } 
+    }
 
-
-
-    private void Update()
+    protected override void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            MapManager map = MapManager.GetInstance();
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
 
-            Vector2Int CurrentPos = new Vector2Int(map.GetMainTileMap().WorldToCell(transform.position).x, map.GetMainTileMap().WorldToCell(transform.position).y);
-            Vector2Int EndPos = new Vector2Int(map.GetMainTileMap().WorldToCell(pos).x, map.GetMainTileMap().WorldToCell(pos).y);
-            StartCoroutine(MovePlayer(CurrentPos, EndPos));
+            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+            Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
+            MoveMoveableObjects_PathFind(CurrentPos, EndPos);
         }
-    }
 
-    IEnumerator MovePlayer(Vector2Int Current, Vector2Int EndPos)
-    {
-        var path = MapManager.GetInstance().AStarPathFinding(Current, EndPos);
-        float distanceThreshold = 0.1f; // Adjust this value as needed
-
-        while (path.Count > 0)
+        switch (playerState)
         {
-            Vector3 targetPosition = path[0].transform.position;
-            float distance = Vector3.Distance(transform.position, targetPosition);
+            case PlayerState.IDLE:
+                {
+                    if (OrderSystem.GetInstance().GetOrder() != null)
+                    {
+                        StartOrder(OrderSystem.GetInstance().GetOrder());
+                        Vector2Int pos = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothLocation(FlowerTypes.ROSE));
+                        Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+                        MoveMoveableObjects_PathFind(CurrentPos, pos);
+                        playerState = PlayerState.COLLECTING;
+                    }
 
-            if (distance > distanceThreshold)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 10f);
-            }
-            else
-            {
-                path.RemoveAt(0);
-            }
-            yield return null;
+                    break;
+                }
+
+            case PlayerState.COLLECTING:
+                {
+                    break;
+                }
         }
     }
 
+    Vector2Int CheckNearestFlowerPos(Vector3 stationPos)
+    {
+        Vector2Int startPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+        Vector2Int endPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(stationPos).x, mapManager.GetMainTileMap().WorldToCell(stationPos).y);
 
-    //// give the player an order to do. The player will automatically fetch the required items and give it to the counter
-    //public void GiveOrder(OrderInformation newOrder)
+        // Create an array to store the paths in all four directions
+        Vector2Int[] directions = new Vector2Int[]
+        {
+        new Vector2Int(endPos.x, endPos.y + 3),  // Up
+        new Vector2Int(endPos.x - 3, endPos.y),  // Left
+        new Vector2Int(endPos.x + 3, endPos.y),  // Right
+        new Vector2Int(endPos.x, endPos.y - 3)   // Down
+        };
+
+        List<List<PathFindingNode>> pathLengths = new List<List<PathFindingNode>>();  // Nested list for storing path lengths
+
+        // Calculate the path lengths in all four directions
+        foreach (Vector2Int direction in directions)
+        {
+            var path = MapManager.GetInstance().AStarPathFinding(startPos, direction);
+            pathLengths.Add(path);  // Add the list of path lengths to the nested list
+        }
+
+        return directions[GetLowestPathIdx(pathLengths)];
+
+    }
+
+    private int GetLowestPathIdx(List<List<PathFindingNode>> List)
+    {
+        int idx = 0;
+        if (List.Count == 0)
+            return idx;
+
+        int current = List[0].Count;
+
+        for (int i = 0; i < List.Count; i++)
+        {
+            if (List[i].Count < current && List[i].Count != 0)
+            {
+                current = List[i].Count;
+                idx = i;
+            }
+        }
+        return idx;
+    }
+
+
+    //Vector2Int CheckNearestFlowerPos(Vector3 stationPos)
     //{
-    //    // CLear out all the orders and assigned it to OrderToFollow
-    //    orderToFollow = newOrder;
-    //    currentOrder = null;
-    //    currentOrder = new OrderInformation();
-    //    startGathering = true;
+
+    //    Vector2Int startPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+    //    Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(stationPos).x, mapManager.GetMainTileMap().WorldToCell(stationPos).y);
+
+
+    //    var path1 = MapManager.GetInstance().AStarPathFinding(startPos, new Vector2Int(EndPos.x, EndPos.y + 1));
+    //    var path2 = MapManager.GetInstance().AStarPathFinding(startPos, new Vector2Int(EndPos.x - 1, EndPos.y));
+    //    var path3 = MapManager.GetInstance().AStarPathFinding(startPos, new Vector2Int(EndPos.x + 1, EndPos.y));
+    //    var path4 = MapManager.GetInstance().AStarPathFinding(startPos, new Vector2Int(EndPos.x, EndPos.y - 1));
+
+    //    List<int> testPathList = new List<int>();
+    //    testPathList.Add(path1.Count);
+    //    testPathList.Add(path2.Count);
+    //    testPathList.Add(path3.Count);
+    //    testPathList.Add(path4.Count);
+
+    //    int pos = 0;
+    //    for (int i = 1; i < testPathList.Count; i++)
+    //    {
+    //        if (testPathList[i] < testPathList[i - 1])
+    //        {
+    //            pos = i;
+    //        }
+    //    }
+
+    //    switch (pos)
+    //    {
+    //        case 0:
+    //            return new Vector2Int(EndPos.x, EndPos.y + 1);
+    //        case 1:
+    //            return new Vector2Int(EndPos.x - 1, EndPos.y);
+    //        case 2:
+    //            return new Vector2Int(EndPos.x + 1, EndPos.y);
+    //        case 3:
+    //            return new Vector2Int(EndPos.x, EndPos.y - 1);
+    //        default:
+    //            return new Vector2Int(0, 0);
+    //    }
     //}
+
+    // give the player an order to do. The player will automatically fetch the required items and give it to the counter
+    public void StartOrder(OrderInformation newOrder)
+    {
+        // CLear out all the orders and assigned it to OrderToFollow
+        orderToFollow = newOrder;
+        currentOrder = null;
+        currentOrder = new OrderInformation();
+    }
+
+    void SetDestination()
+    {
+
+    }
 
     /// <summary>
     /// Update the currentOrder class to match some of the ordertofollow class

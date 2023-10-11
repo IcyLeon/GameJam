@@ -21,7 +21,7 @@ public class MoveableObjects : MonoBehaviour
 
         return GetMoveableObjectsSO().Speed;
     }
-    private void Awake()
+    protected virtual void Awake()
     {
         mapManager = MapManager.GetInstance();
     }
@@ -85,6 +85,9 @@ public class MoveableObjects : MonoBehaviour
     }
     private IEnumerator MoveObject_PathFinder(Vector2Int Current, Vector2Int EndPos)
     {
+        if (mapManager == null)
+            mapManager = MapManager.GetInstance();
+
         var path = mapManager.AStarPathFinding(Current, EndPos);
         float distanceThreshold = 0.1f; // Adjust this value
 

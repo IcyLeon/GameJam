@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
   m_Name: BabyBreathShopInfo
   m_EditorClassIdentifier: 
-  Cost: 500
+  Cost: 64000
   itemsSO: {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}

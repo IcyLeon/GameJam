@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Lily Of The Valley
   Rarity: 1
-  ItemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
-  StartingIncome: 0
+  ItemSprite: {fileID: 21300000, guid: dd97bd9cc636d3646be149035b440c03, type: 3}
+  StartingIncome: 2000
   multipler: 0
   flowerType: 5
   ItemDescription: Why the name so long?

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995f95f28e482946bad7ca046da138a, type: 3}
   m_Name: TulipShopInfo
   m_EditorClassIdentifier: 
-  Cost: 200
+  Cost: 50
   itemsSO: {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}

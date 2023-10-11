@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Orchid
   Rarity: 1
-  ItemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
-  StartingIncome: 0
+  ItemSprite: {fileID: 21300000, guid: 18a970f25afcd3346b894ad31f61cbdb, type: 3}
+  StartingIncome: 18000
   multipler: 0
   flowerType: 6
   ItemDescription: Fun fact, theres a school that is named this.

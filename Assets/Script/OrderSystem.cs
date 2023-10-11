@@ -15,6 +15,7 @@ public class OrderSystem : MonoBehaviour
         instance = this;
     }
 
+
     /// <summary>
     /// The list that contains all the location for the flower booth
     /// </summary>
@@ -23,7 +24,7 @@ public class OrderSystem : MonoBehaviour
     /// <summary>
     /// Define the list of orders made by the customer. The player will automatically do the first one in the list.
     /// </summary>
-    [SerializeField] List<OrderInformation> orderList = new List<OrderInformation>();
+    private List<OrderInformation> orderList = new List<OrderInformation>();
 
     /// <summary>
     /// A temporary place to store where to get the wrap
@@ -40,17 +41,29 @@ public class OrderSystem : MonoBehaviour
     /// </summary>
     [SerializeField] Player tempPlayer;
 
-
-    private void Update()
+    public void GenerateNewOrder(List<FlowerTypes> flowerTypeList)
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    OrderInformation newOrder = new OrderInformation();
-        //    newOrder.flower1 = FlowerTypes.ROSE;
-        //    newOrder.flower2 = FlowerTypes.ROSE;
-        //    newOrder.flower3 = FlowerTypes.DAISY;
-        //    tempPlayer.GiveOrder(newOrder);
-        //}
+        OrderInformation oi = new OrderInformation();
+        oi.wrap = WrapTypes.WRAP_1;
+        for (int i = 0; i < flowerTypeList.Count; i++)
+        {
+            oi.flowerTypeList.Add(flowerTypeList[i]);
+        }
+
+        orderList.Add(oi);
+    }
+
+
+    /// <summary>
+    /// Call this function to get the first item in the orderList. returns null if there is none
+    /// </summary>
+    /// <returns></returns>
+    public OrderInformation GetOrder()
+    {
+        if (orderList.Count > 0)
+            return orderList[0];
+        else
+            return null;
     }
 
     /// <summary>
@@ -96,8 +109,6 @@ public class OrderSystem : MonoBehaviour
 
 public class OrderInformation
 {
-    public FlowerTypes flower1;
-    public FlowerTypes flower2;
-    public FlowerTypes flower3;
+    public List<FlowerTypes> flowerTypeList = new List<FlowerTypes>();
     public WrapTypes wrap;
 }
