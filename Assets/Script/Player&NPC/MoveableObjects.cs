@@ -7,7 +7,7 @@ public class MoveableObjects : MonoBehaviour
 {
     [SerializeField] protected MoveableObjectsSO moveableObjectsSO;
     protected Coroutine MovingMoveableObjects;
-    private MapManager mapManager;
+    protected MapManager mapManager;
 
     public MoveableObjectsSO GetMoveableObjectsSO()
     {
@@ -21,15 +21,11 @@ public class MoveableObjects : MonoBehaviour
 
         return GetMoveableObjectsSO().Speed;
     }
-    protected virtual void Awake()
-    {
-        mapManager = MapManager.GetInstance();
-    }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        
+        mapManager = MapManager.GetInstance();
     }
 
     // Update is called once per frame

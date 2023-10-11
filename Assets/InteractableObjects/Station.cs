@@ -5,13 +5,16 @@ using UnityEngine;
 public class Station : InteractableObjects
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Transform WaypointContainer;
+    private Transform[] PossibleWaypointTransform; 
     private int Income;
 
     private void Start()
     {
         Income = GetStartingIncome();
-        spriteRenderer.sprite = AssetManager.GetInstance().GetBoothSprite(GetItemsSO());
+        PossibleWaypointTransform = WaypointContainer.GetComponentsInChildren<Transform>();
     }
+
     private int GetStartingIncome()
     {
         if (GetItemsSO() == null)
@@ -24,13 +27,19 @@ public class Station : InteractableObjects
         AssetManager.GetInstance().SetSelectedStation(this);
     }
 
+    public Transform[] GetAllWaypoints()
+    {
+        return PossibleWaypointTransform;
+    }
     public int GetIncome()
     {
         return Income;
     }
 
-    public ItemsSO GetItemsSO()
+    public override void SetitemsSO(ItemsSO itemsSO)
     {
-        return itemsSO;
+        base.SetitemsSO(itemsSO);
+        spriteRenderer.sprite = AssetManager.GetInstance().GetBoothSprite(GetItemsSO());
     }
+
 }
