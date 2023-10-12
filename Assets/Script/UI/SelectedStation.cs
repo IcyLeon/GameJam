@@ -34,6 +34,12 @@ public class SelectedStation : MonoBehaviour
             RarityTxt.color = assetManager.GetRarityColor(assetManager.GetSelectedStation().GetItemsSO().Rarity);
         }
         if (IncomeTxt)
-            IncomeTxt.text = assetManager.GetSelectedStation().GetIncome().ToString();
+        {
+            if (assetManager.GetSelectedStation().GetItemsSO() != InventoryManager.GetInstance().GetWrappersSOList()[0])
+                IncomeTxt.text = assetManager.GetSelectedStation().GetItemsSO().StartingIncome.ToString();
+            else
+                IncomeTxt.text = "X" + assetManager.GetSelectedStation().GetItemsSO().multipler.ToString();
+        }
+
     }
 }
