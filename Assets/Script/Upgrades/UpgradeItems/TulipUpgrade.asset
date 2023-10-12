@@ -17,5 +17,5 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 52f5d89704714624691a2612042c040d, type: 3}
   Cost: 600
   multiplerIfAny: 2
-  affectedFlowerTypes: 2
-  affectedRarity: 3
+  affectWhatItems:
+  - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}

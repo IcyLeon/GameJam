@@ -39,6 +39,10 @@ public class OrderSystem : MonoBehaviour
     [SerializeField] Transform wrapZone;
 
 
+    private int currentOrderIncome;
+    private bool runOnce = false;
+
+
     public void GenerateNewOrder(List<Item> itemList)
     {
         OrderInformation oi = new OrderInformation();
@@ -58,7 +62,14 @@ public class OrderSystem : MonoBehaviour
     public OrderInformation GetOrder()
     {
         if (orderList.Count > 0)
+        {
+            if (!runOnce)
+            {
+                currentOrderIncome = FinalPriceCalculation.GetInstance().CalculateFinalPrice(orderList[0]);
+                runOnce = true;
+            }
             return orderList[0];
+        }
         else
             return null;
     }
@@ -66,12 +77,16 @@ public class OrderSystem : MonoBehaviour
     public void DeleteOrderItem(Item item)
     {
         OrderInformation currentOrder = GetOrder();
+
         if (currentOrder != null)
             currentOrder.SendItemList.Remove(item);
     }
     public void DeleteOrder(OrderInformation order)
     {
+        InventoryManager.GetInstance().AddCoins(currentOrderIncome);
+        currentOrderIncome = 0;
         orderList.Remove(order);
+        runOnce = false;
     }
 
     public int GetItemListPreparing(OrderInformation orderInformation)

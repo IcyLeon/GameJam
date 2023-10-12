@@ -18,6 +18,11 @@ public class QueueSystem : MonoBehaviour
     private QueueRowManager[] RowsQueue;
     private NPCManager npcManager;
 
+    [SerializeField] float maxTimeIntervalBetweenCustomer = 15.0f;
+    [SerializeField] float minTimeIntervalBetweenCustomer = 5.0f;
+    private float timer;
+
+
     private void Awake()
     {
         instance = this;
@@ -33,13 +38,34 @@ public class QueueSystem : MonoBehaviour
     {
         npcManager = NPCManager.GetInstance();
         RowsQueue = GetComponentsInChildren<QueueRowManager>();
+        timer = minTimeIntervalBetweenCustomer;
     }
+
+    private float RandomizeTime()
+    {
+        return UnityEngine.Random.Range(minTimeIntervalBetweenCustomer, maxTimeIntervalBetweenCustomer);
+    }    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    QueueRowManager queue = FindShortestQueue();
+        //    if (queue != null)
+        //    {
+        //        if (queue.CanAddNPC())
+        //        {
+        //            NPC npc = npcManager.SpawnNPC();
+        //            queue.AddNPC(npc);
+        //        }
+        //    }
+        //}
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
         {
+            timer = RandomizeTime();
             QueueRowManager queue = FindShortestQueue();
             if (queue != null)
             {
@@ -50,7 +76,6 @@ public class QueueSystem : MonoBehaviour
                 }
             }
         }
-
     }
 
     public Transform GetFIFOWaypointTransform(QueueRowManager queue)
@@ -96,7 +121,6 @@ public class QueueSystem : MonoBehaviour
 
         return queue;
     }
-
 
     public Transform GetEntrancePosition()
     {

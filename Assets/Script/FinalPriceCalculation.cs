@@ -4,68 +4,62 @@ using UnityEngine;
 
 public class FinalPriceCalculation : MonoBehaviour
 {
-    //private static FinalPriceCalculation instance;
-    //private List<UpgradeItemSO> unlockedItemsList;
+    private static FinalPriceCalculation instance;
+    private List<UpgradeItemSO> unlockedItemsList;
 
-    //private void Awake()
-    //{
-    //    instance = this;
-    //}
+    private void Awake()
+    {
+        instance = this;
+    }
 
-    //public static FinalPriceCalculation GetInstance()
-    //{
-    //    return instance;
-    //}
+    public static FinalPriceCalculation GetInstance()
+    {
+        return instance;
+    }
 
-    //public void CalculateFinalPrice(OrderInformation theOrder)
-    //{
-    //    unlockedItemsList = InventoryManager.GetInstance().GetUpgradeItemsSOList();
-    //    List<FlowerTypes> flowerList = theOrder.flowerTypeList;
-    //    float totalPrice = 0;
+    public int CalculateFinalPrice(OrderInformation theOrder)
+    {
+        unlockedItemsList = InventoryManager.GetInstance().GetUpgradeItemsSOList();
+        List<Item> itemList = theOrder.SendItemList;
+        List<ItemsSO> itemSOList = new List<ItemsSO>();
 
-    //    for (int i = 0; i < flowerList.Count; i++)
-    //    {
-    //        totalPrice += CalculateModifierApplied(flowerList[i]);
-    //    }
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            int amt = itemList[i].GetAmount();
+            for (int x = 0; x < amt; x++)
+            {
+                itemSOList.Add(itemList[i].GetItemsSO());
+            }
+        }
 
-    //    Debug.Log(totalPrice);
-    //}
+        float totalPrice = 0;
 
-    //int CalculateModifierApplied(FlowerTypes flower)
-    //{
-    //    ItemsSO flowerItem = GetItemSOReference(flower);
-    //    float basePrice = flowerItem.StartingIncome;
+        for (int i = 0; i < itemSOList.Count; i++)
+        {
+            totalPrice += CalculateModifierApplied(itemSOList[i]);
+        }
 
-    //    if (unlockedItemsList == null)
-    //        return (int)basePrice;
+        return (int)totalPrice;
+    }
 
-    //    for (int i = 0; i < unlockedItemsList.Count; i++)
-    //    {
-    //        if (unlockedItemsList[i].affectedFlowerTypes == flower)
-    //        {
-    //            basePrice *= unlockedItemsList[i].multiplerIfAny;
-    //        }
+    int CalculateModifierApplied(ItemsSO flower)
+    {
+        float basePrice = flower.StartingIncome;
 
-    //        else if (unlockedItemsList[i].affectedRarity == flowerItem.Rarity)
-    //        {
-    //            basePrice *= unlockedItemsList[i].multiplerIfAny;
-    //        }
-    //    }
+        if (unlockedItemsList == null)
+            return (int)basePrice;
 
-    //    return (int)basePrice;
-    //}
+        for (int i = 0; i < unlockedItemsList.Count; i++)
+        {
+            for (int x = 0; x < unlockedItemsList[i].affectWhatItems.Count; x++)
+            {
+                if (unlockedItemsList[i].affectWhatItems[x] == flower)
+                {
+                    basePrice *= unlockedItemsList[i].multiplerIfAny;
+                }
+            }
+        }
 
-    //ItemsSO GetItemSOReference(FlowerTypes flowerType)
-    //{
-    //    List<ItemsSO> flowerList = InventoryManager.GetInstance().GetItemsSOList();
-
-    //    for (int i = 0; i < flowerList.Count; i++)
-    //    {
-    //        if (flowerList[i].flowerType == flowerType)
-    //        {
-    //            return flowerList[i];
-    //        }
-    //    }
-    //    return null;
-    //}
+        return (int)basePrice;
+    }
 }

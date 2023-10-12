@@ -31,7 +31,7 @@ public class MoveableObjects : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+        UpdateState();
     }
 
     public bool MoveMoveableObjects(Vector3 EndPos, bool forceToChange = false)
@@ -48,6 +48,11 @@ public class MoveableObjects : MonoBehaviour
         }
 
         return false;
+    }
+
+    protected virtual void UpdateState()
+    {
+
     }
 
     public bool MoveMoveableObjects_PathFind(Vector2Int Current, Vector2Int EndPos, bool forceToChange = false)

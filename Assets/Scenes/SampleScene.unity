@@ -8847,6 +8847,7 @@ GameObject:
   - component: {fileID: 442340640}
   - component: {fileID: 442340641}
   - component: {fileID: 442340642}
+  - component: {fileID: 442340643}
   m_Layer: 0
   m_Name: Misc
   m_TagString: Untagged
@@ -8896,6 +8897,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerPrefab: {fileID: 6396981517591546338, guid: cc102a1c0696f3149b3f1f20b95cb0e3, type: 3}
   BoothInfoList:
+  - BoothSprite: {fileID: 21300000, guid: 279aea491a485a04b826583b2675ed63, type: 3}
+    itemsSO: {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
+    station: {fileID: 397779404}
   - BoothSprite: {fileID: 21300000, guid: f4cfbd7442df8f041b47184d58d86dde, type: 3}
     itemsSO: {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
     station: {fileID: 879359015}
@@ -8920,9 +8924,6 @@ MonoBehaviour:
   - BoothSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
     itemsSO: {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
     station: {fileID: 1023664915}
-  - BoothSprite: {fileID: 21300000, guid: 279aea491a485a04b826583b2675ed63, type: 3}
-    itemsSO: {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
-    station: {fileID: 397779404}
   - BoothSprite: {fileID: 21300000, guid: 570b8e14fde16b04488c2821e4dfc91c, type: 3}
     itemsSO: {fileID: 11400000, guid: 0ab3ad5773a8ca6438138f8ab1e4c16d, type: 2}
     station: {fileID: 940954974}
@@ -8937,6 +8938,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
   - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
   - {fileID: 11400000, guid: 0ab3ad5773a8ca6438138f8ab1e4c16d, type: 2}
+  UpgradeItemSOList: []
   StationPrefab: {fileID: 1407387797405926488, guid: 008502f29e3321c41a816994252968a5, type: 3}
   CommonColor:
     serializedVersion: 2
@@ -8976,6 +8978,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wrapZone: {fileID: 0}
+--- !u!114 &442340643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442340637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4974a827508fb46bd86626adeb2a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &458363699
 GameObject:
   m_ObjectHideFlags: 0
@@ -15775,8 +15789,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Upgrades
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fdc611bdf0f48ff4e8bd842838ddab84, type: 2}
-  m_sharedMaterial: {fileID: 1923150424883956291, guid: fdc611bdf0f48ff4e8bd842838ddab84, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4513b58e4e0841542acdf11ae9226ebb, type: 2}
+  m_sharedMaterial: {fileID: 7069291159489294730, guid: 4513b58e4e0841542acdf11ae9226ebb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16146,16 +16160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896c852d5bb11a4d8d5390a9de8f752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeItemList:
-  - {fileID: 11400000, guid: be4181d00b2bc9d469d3e1af4202639e, type: 2}
-  - {fileID: 11400000, guid: ffab8d4eba8c772409d5f776ceeb44b4, type: 2}
-  - {fileID: 11400000, guid: 585e3fdd289897940abf8c113442df49, type: 2}
-  - {fileID: 11400000, guid: 26f1497f8cdc1b146b11d312df2ab032, type: 2}
-  - {fileID: 11400000, guid: 7d35f638dee291746a73af6fdd0e5d97, type: 2}
-  - {fileID: 11400000, guid: 18f0c1c7523261741a315474ee6a37fc, type: 2}
-  - {fileID: 11400000, guid: a18898e5084579741a9ef80b996ecdb0, type: 2}
-  - {fileID: 11400000, guid: 397203f5042f44c4b93658d0c8211050, type: 2}
-  - {fileID: 11400000, guid: ca862be953c887f4780f60dea8e9aae8, type: 2}
   UpgradeContentParent: {fileID: 1704603502}
   upgradeItemButton: {fileID: 6263594063684715787, guid: 93861948208552544a878c0999e85527, type: 3}
 --- !u!1 &1902819276

@@ -13,8 +13,14 @@ public class Player : MoveableObjects
     private PlayerState playerState;
     private Coroutine timerCoroutine;
     private OrderSystem orderSystem;
+    /// <summary>
+    /// Store the Item that it is currently preparing
+    /// </summary>
     private Item currentItemPreparing;
 
+    /// <summary>
+    /// Store the list of items that the player is preparing
+    /// </summary>
     private List<Item> CurrentItemPreparingList = new List<Item>();
 
     private enum PlayerState
@@ -35,15 +41,21 @@ public class Player : MoveableObjects
 
     protected override void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 0;
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    pos.z = 0;
 
-            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-            Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
-            MoveMoveableObjects_PathFind(CurrentPos, EndPos);
-        }
+        //    Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+        //    Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
+        //    MoveMoveableObjects_PathFind(CurrentPos, EndPos);
+        //}
+        base.Update();
+    }
+
+    protected override void UpdateState()
+    {
+        // if there is no more order. Set the playerstate to idle and destroy any timerCourtine as well as the slider.
         if (OrderSystem.GetInstance().GetOrder() == null)
         {
             if (timerCoroutine != null)
@@ -56,10 +68,12 @@ public class Player : MoveableObjects
 
         switch (playerState)
         {
+            // if the player has an order, set its state to moving
             case PlayerState.IDLE:
-                if (orderSystem.GetOrder() != null)
-                    playerState = PlayerState.MOVING;
-
+                {
+                    if (orderSystem.GetOrder() != null)
+                        playerState = PlayerState.MOVING;
+                }
                 break;
             case PlayerState.MOVING:
                 if (orderSystem.GetOrder() != null)
@@ -87,13 +101,14 @@ public class Player : MoveableObjects
                 {
                     playerState = PlayerState.MOVING;
                 }
-                else {
+                else
+                {
                     if (!isMoving())
                     {
                         QueueSystem queueSystem = QueueSystem.GetInstance();
                         Transform ClosestWaypoint = queueSystem.GetFIFOWaypointTransform(queueSystem.GetFirstQueueFIFO());
-                        Debug.Log(ClosestWaypoint);
-                        Debug.Log(queueSystem.GetFirstQueueFIFO());
+                        //Debug.Log(ClosestWaypoint);
+                        //Debug.Log(queueSystem.GetFirstQueueFIFO());
                         if (ClosestWaypoint != null)
                         {
                             Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);

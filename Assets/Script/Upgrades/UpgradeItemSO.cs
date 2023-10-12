@@ -11,4 +11,5 @@ public class UpgradeItemSO : ScriptableObject
     public Sprite itemSprite;
     public int Cost;
     public float multiplerIfAny = 1.0f;
+    public List<ItemsSO> affectWhatItems;
 }
