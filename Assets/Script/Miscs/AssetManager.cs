@@ -42,6 +42,7 @@ public class AssetManager : MonoBehaviour
         public ItemsSO itemsSO;
         public Station station;
     }
+    [SerializeField] GameObject TimerPrefab;
     [SerializeField] BoothInfo[] BoothInfoList;
     [SerializeField] ItemsSO[] ItemSOList;
     [SerializeField] UpgradeItemSO[] UpgradeItemSOList;
@@ -76,6 +77,10 @@ public class AssetManager : MonoBehaviour
         return CommonColor;
     }
 
+    public GameObject GetTimerPrefab()
+    {
+        return TimerPrefab;
+    }
     public Station GetSelectedStation()
     {
         return SelectedStation;
@@ -139,17 +144,12 @@ public class AssetManager : MonoBehaviour
         }
     }
 
-    public ItemsSO[] GetItemsSOList()
+    public ItemsSO GetItemsSO(ItemsSO itemsSO)
     {
-        return ItemSOList;
-    }
-
-    public ItemsSO GetItemsSOByFlowerTypes(FlowerTypes flowerType)
-    {
-        for(int i = 0; i < GetItemsSOList().Length; i++)
+        for(int i = 0; i < ItemSOList.Length; i++)
         {
-            if (flowerType == GetItemsSOList()[i].flowerType)
-                return GetItemsSOList()[i];
+            if (itemsSO == ItemSOList[i])
+                return ItemSOList[i];
         }
         return null;
     }

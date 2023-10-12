@@ -7,13 +7,12 @@ public class NPC : MoveableObjects
 {
     [SerializeField] Canvas canvasUI;
     [SerializeField] Transform ItemContainer;
-
     [SerializeField] GameObject ItemSlotPrefab;
     List<ItemSlot> ItemSlotList = new();
     List<Item> ItemsList = new();
     private int MaxAmount = 3;
-    Coroutine togglePanelDelayCoroutine, ChangeState;
-    private List<FlowerTypes> generatedItemList;
+    Coroutine togglePanelDelayCoroutine;
+    private float WaitingTime = 0;
 
     public enum NPCState
     {
@@ -36,20 +35,20 @@ public class NPC : MoveableObjects
     {
         // Get the list of unlocked ItemSO
         List<ItemsSO> unlockedItemList = InventoryManager.GetInstance().GetItemsSOList();
+        List<ItemsSO> generatedItemList = new();
 
-        // List to temporary stored the generated flowerTypes
-        generatedItemList = new List<FlowerTypes>();
+        if (unlockedItemList.Count == 0)
+            return;
 
         // Generate a total of 3 different flower type acoording to what player has unlocked
         for (int i = 0; i < MaxAmount; i++)
         {
             int num = Random.Range(0, unlockedItemList.Count);
-            FlowerTypes generatedFlowerType = unlockedItemList[num].flowerType;
-            generatedItemList.Add(generatedFlowerType);
+            generatedItemList.Add(unlockedItemList[num]);
         }
 
         // Create a dictonary to get any similar occurence
-        Dictionary<FlowerTypes, int> amtOfFlowerTypes = new Dictionary<FlowerTypes, int>();
+        Dictionary<ItemsSO, int> amtOfFlowerTypes = new Dictionary<ItemsSO, int>();
         for (int i = 0; i < generatedItemList.Count; i++)
         {
             if (!amtOfFlowerTypes.ContainsKey(generatedItemList[i]))
@@ -63,9 +62,9 @@ public class NPC : MoveableObjects
         }
 
         // for every Key in the dictionary, create a new "Item" and add it into the itemList
-        foreach (var flower in amtOfFlowerTypes.Keys)
+        foreach (var itemsSO in amtOfFlowerTypes.Keys)
         {
-            Item item = new Item(AssetManager.GetInstance().GetItemsSOByFlowerTypes(flower), amtOfFlowerTypes[flower]);
+            Item item = new Item(AssetManager.GetInstance().GetItemsSO(itemsSO), amtOfFlowerTypes[itemsSO]);
             ItemsList.Add(item);
         }
     }
@@ -97,8 +96,10 @@ public class NPC : MoveableObjects
                 if (QueueSystem.GetInstance().isFirstInQueue(this)) {
                     if (togglePanelDelayCoroutine == null)
                         togglePanelDelayCoroutine = StartCoroutine(togglePanelDelay(true));
-                    if (canvasUI.gameObject.activeSelf && ChangeState == null)
-                        ChangeState = StartCoroutine(Test(NPCState.LEAVING));
+
+                    if (canvasUI.gameObject.activeSelf)
+                        UpdateWaitingTime();
+
                 }
                 break;
             case NPCState.LEAVING:
@@ -110,15 +111,26 @@ public class NPC : MoveableObjects
         }
     }
 
-    public void SetState(NPCState state)
+    public void UpdateWaitingTime()
+    {
+        if (state != NPCState.LEAVING)
+            WaitingTime += Time.deltaTime;
+    }
+
+    public void Served()
+    {
+        OrderSystem.GetInstance().DeleteOrder(OrderSystem.GetInstance().GetOrder());
+        SwitchState(NPCState.LEAVING);
+    }
+
+    private void SetState(NPCState state)
     {
         this.state = state;
     }
 
 
-    public IEnumerator Test(NPCState state)
+    public void SwitchState(NPCState state)
     {
-        yield return new WaitForSeconds(2f);
         if (state == NPCState.LEAVING)
         {
             togglePanel(false);
@@ -127,10 +139,18 @@ public class NPC : MoveableObjects
         SetState(state);
     }
 
+    public float GetWaitingTime()
+    {
+        if (!gameObject.activeSelf)
+            WaitingTime = 0;
+
+        return WaitingTime;
+    }
+
     private IEnumerator togglePanelDelay(bool active)
     {
         yield return new WaitForSeconds(0.5f);
-        OrderSystem.GetInstance().GenerateNewOrder(generatedItemList);
+        OrderSystem.GetInstance().GenerateNewOrder(ItemsList);
         togglePanel(active);
     }
 
