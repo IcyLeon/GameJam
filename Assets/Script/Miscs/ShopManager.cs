@@ -31,7 +31,11 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PurchaseBtn.onClick.AddListener(PurchaseInfo);
+        PurchaseBtn.onClick.AddListener(delegate
+        {
+            PurchaseInfo();
+        }
+        );
         // Create the flower shop item in the flowerShop list
         for (int i = 0; i < FlowerShopList.Length; i++)
         {
@@ -55,6 +59,27 @@ public class ShopManager : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+
+        if (JsonSaveFile.GetInstance() !=  null)
+        {
+            List<ItemsSO> shopItemSOList = JsonSaveFile.GetInstance().GetItemSOList();
+            ShopItemButton[] shopItemList = GetComponentsInChildren<ShopItemButton>();
+
+            for (int i = 0; i < shopItemSOList.Count; i++)
+            {
+                for (int x = 0; x < shopItemList.Length; x++)
+                {
+                    if (shopItemSOList[i] == shopItemList[x].GetItemsSO())
+                    {
+                        currentShopItemButtonSelected = shopItemList[x];
+                        PurchaseInfo(true);
+                        currentShopItemButtonSelected.Purchased();
+                        break;
+                    }
+                }
+            }
+            currentShopItemButtonSelected = null;
+        }
     }
 
     // action
@@ -72,13 +97,17 @@ public class ShopManager : MonoBehaviour
         PurchaseBtn.gameObject.SetActive(shopItemButton != null && !shopItemButton.isPurchased());
     }
 
-    // core
-    void PurchaseInfo()
+    /// <summary>
+    /// Purchase the item if the player can afford it. Ignore the check and subtracting of coins if its loaded in.
+    /// </summary>
+    void PurchaseInfo(bool loadedIn = false)
     {
-        if (isPurchaseable(currentShopItemButtonSelected))
+        if (isPurchaseable(currentShopItemButtonSelected) || loadedIn)
         {
             currentShopItemButtonSelected.Purchased();
-            InventoryManager.GetInstance().SubtractCoins(currentShopItemButtonSelected.GetOriginalCost());
+
+            if (!loadedIn)
+                InventoryManager.GetInstance().SubtractCoins(currentShopItemButtonSelected.GetOriginalCost());
 
             if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.FLOWER)
             {

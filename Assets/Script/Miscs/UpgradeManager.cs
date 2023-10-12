@@ -34,7 +34,20 @@ public class UpgradeManager : MonoBehaviour
 
         if (JsonSaveFile.GetInstance() != null)
         {
+            List<UpgradeItemSO> upgradeItemSOList = JsonSaveFile.GetInstance().GetUpgradeItemSOList();
+            UpgradeItem[] upgradeItemList = GetComponentsInChildren<UpgradeItem>();
 
+            for (int i = 0; i < upgradeItemSOList.Count; i++)
+            {
+                for (int x = 0; x < upgradeItemList.Length; x++)
+                {
+                    if (upgradeItemSOList[i] == upgradeItemList[x].GetItemSO())
+                    {
+                        upgradeItemList[x].BuyItem();
+                        break;
+                    }
+                }
+            }
         }
     }
 

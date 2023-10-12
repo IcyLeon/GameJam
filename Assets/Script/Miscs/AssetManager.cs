@@ -8,29 +8,6 @@ public enum Rarity
     COMMON,
     UNCOMMON,
     RARE,
-    NONE,
-    ALL,
-}
-
-public enum FlowerTypes
-{
-    NONE,
-    ROSE,
-    TULIP,
-    DAISY,
-    SUNFLOWER,
-    LILY_OF_THE_VALLEY,
-    ORCHID,
-    LAVENDER,
-    MOONFLOWER,
-    PEONY,
-    ALL,
-}
-
-public enum WrapTypes
-{
-    NONE,
-    WRAP_1,
 }
 
 public class AssetManager : MonoBehaviour
@@ -152,6 +129,11 @@ public class AssetManager : MonoBehaviour
                 return ItemSOList[i];
         }
         return null;
+    }
+
+    public ItemsSO[] GetItemsSOList()
+    {
+        return ItemSOList;
     }
 
     public UpgradeItemSO[] GetUpgradeItemsSOList()

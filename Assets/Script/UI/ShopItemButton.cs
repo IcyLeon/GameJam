@@ -9,13 +9,12 @@ public class ShopItemButton : ItemButton
     [SerializeField] CanvasGroup canvasGroup;
     private GameObject StationPrefab;
     private int Cost;
-    private bool PurchaseStatus;
+    private bool PurchaseStatus = false;
     [SerializeField] TextMeshProUGUI CostTxt;
     [SerializeField] Image ItemImage;
 
     void Start()
     {
-        PurchaseStatus = false;
         if (CostTxt)
             CostTxt.text = AssetManager.GetInstance().AdjustCurrencyDisplay(GetOriginalCost());
         if (ItemImage)

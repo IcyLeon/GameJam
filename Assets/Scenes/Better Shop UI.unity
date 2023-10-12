@@ -557,17 +557,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3666adce39f7b20439aa98cecd9b162e, type: 3}
---- !u!114 &35686631 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2196306021615669676, guid: 3666adce39f7b20439aa98cecd9b162e, type: 3}
-  m_PrefabInstance: {fileID: 35686630}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7422413a310b2bd41a178fb6cb567a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &36006059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +2650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpgradeContentParent: {fileID: 1219094229}
   upgradeItemButton: {fileID: 6263594063684715787, guid: 93861948208552544a878c0999e85527, type: 3}
+  psf: {fileID: 11400000, guid: 066989c01a21e3c498ed6ce61ebcd4e9, type: 2}
 --- !u!1001 &386169911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8830,6 +8820,7 @@ GameObject:
   - component: {fileID: 698497301}
   - component: {fileID: 698497300}
   - component: {fileID: 698497305}
+  - component: {fileID: 698497306}
   m_Layer: 0
   m_Name: Misc
   m_TagString: Untagged
@@ -8850,8 +8841,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wrapZone: {fileID: 0}
-  counterArea: {fileID: 0}
-  tempPlayer: {fileID: 35686631}
 --- !u!114 &698497301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8880,6 +8869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac02fe34ca00f7409c4159462c9ac62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  psf: {fileID: 11400000, guid: 066989c01a21e3c498ed6ce61ebcd4e9, type: 2}
 --- !u!4 &698497304
 Transform:
   m_ObjectHideFlags: 0
@@ -8908,6 +8898,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4974a827508fb46bd86626adeb2a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &698497306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698497299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09695b4d4adebe348b22d8c59a4722ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerPrefab: {fileID: 0}
+  BoothInfoList:
+  - BoothSprite: {fileID: 21300000, guid: 279aea491a485a04b826583b2675ed63, type: 3}
+    itemsSO: {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
+    station: {fileID: 913420254}
+  - BoothSprite: {fileID: 21300000, guid: f4cfbd7442df8f041b47184d58d86dde, type: 3}
+    itemsSO: {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
+    station: {fileID: 113254696}
+  - BoothSprite: {fileID: 21300000, guid: 4c4b7468561a8c64eba313c47f093754, type: 3}
+    itemsSO: {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
+    station: {fileID: 758540767}
+  - BoothSprite: {fileID: 21300000, guid: 84137fe995561924dbffb7a4a2d8b97d, type: 3}
+    itemsSO: {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
+    station: {fileID: 386169913}
+  - BoothSprite: {fileID: 21300000, guid: dd97bd9cc636d3646be149035b440c03, type: 3}
+    itemsSO: {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
+    station: {fileID: 1924679467}
+  - BoothSprite: {fileID: 21300000, guid: 18a970f25afcd3346b894ad31f61cbdb, type: 3}
+    itemsSO: {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
+    station: {fileID: 1423962208}
+  - BoothSprite: {fileID: 21300000, guid: f4b3338f95ffcd44cb76607e03b60e9e, type: 3}
+    itemsSO: {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
+    station: {fileID: 993011463}
+  - BoothSprite: {fileID: 21300000, guid: e3bd3286efde0ff438bd592020018474, type: 3}
+    itemsSO: {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
+    station: {fileID: 125588663}
+  - BoothSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+    itemsSO: {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
+    station: {fileID: 153484435}
+  ItemSOList:
+  - {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
+  - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
+  - {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
+  - {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
+  - {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
+  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
+  - {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
+  - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
+  - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
+  UpgradeItemSOList:
+  - {fileID: 11400000, guid: be4181d00b2bc9d469d3e1af4202639e, type: 2}
+  - {fileID: 11400000, guid: ffab8d4eba8c772409d5f776ceeb44b4, type: 2}
+  - {fileID: 11400000, guid: 585e3fdd289897940abf8c113442df49, type: 2}
+  - {fileID: 11400000, guid: 26f1497f8cdc1b146b11d312df2ab032, type: 2}
+  - {fileID: 11400000, guid: 7d35f638dee291746a73af6fdd0e5d97, type: 2}
+  - {fileID: 11400000, guid: 18f0c1c7523261741a315474ee6a37fc, type: 2}
+  - {fileID: 11400000, guid: a18898e5084579741a9ef80b996ecdb0, type: 2}
+  - {fileID: 11400000, guid: 397203f5042f44c4b93658d0c8211050, type: 2}
+  - {fileID: 11400000, guid: ca862be953c887f4780f60dea8e9aae8, type: 2}
+  StationPrefab: {fileID: 1407387797405926488, guid: 008502f29e3321c41a816994252968a5, type: 3}
+  CommonColor:
+    serializedVersion: 2
+    rgba: 4294945280
+  UncommonColor:
+    serializedVersion: 2
+    rgba: 0
+  RareColor:
+    serializedVersion: 2
+    rgba: 4278227199
 --- !u!1 &702040595
 GameObject:
   m_ObjectHideFlags: 0
@@ -11640,6 +11701,7 @@ MonoBehaviour:
   DescriptionContent: {fileID: 616649471}
   TitleTxt: {fileID: 735138166}
   DescTxt: {fileID: 348794866}
+  psf: {fileID: 11400000, guid: 066989c01a21e3c498ed6ce61ebcd4e9, type: 2}
 --- !u!114 &1188874296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15437,6 +15499,7 @@ MonoBehaviour:
   EntrancePosition:
   - {fileID: 1946470311}
   - {fileID: 837877201}
+  ServingQueueWaypoint: []
 --- !u!4 &1741371505
 Transform:
   m_ObjectHideFlags: 0
@@ -16589,7 +16652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2104161019}
   - component: {fileID: 2104161018}
-  - component: {fileID: 2104161020}
   m_Layer: 0
   m_Name: SaveFile
   m_TagString: Untagged
@@ -16610,6 +16672,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 066989c01a21e3c498ed6ce61ebcd4e9, type: 2}
+  shopItemList:
+  - {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
+  - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
+  - {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
+  - {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
+  - {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
+  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
+  - {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
+  - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
+  - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
+  upgradeItemShop:
+  - {fileID: 11400000, guid: be4181d00b2bc9d469d3e1af4202639e, type: 2}
+  - {fileID: 11400000, guid: ffab8d4eba8c772409d5f776ceeb44b4, type: 2}
+  - {fileID: 11400000, guid: 585e3fdd289897940abf8c113442df49, type: 2}
+  - {fileID: 11400000, guid: 26f1497f8cdc1b146b11d312df2ab032, type: 2}
+  - {fileID: 11400000, guid: 7d35f638dee291746a73af6fdd0e5d97, type: 2}
+  - {fileID: 11400000, guid: 18f0c1c7523261741a315474ee6a37fc, type: 2}
+  - {fileID: 11400000, guid: a18898e5084579741a9ef80b996ecdb0, type: 2}
+  - {fileID: 11400000, guid: 397203f5042f44c4b93658d0c8211050, type: 2}
+  - {fileID: 11400000, guid: ca862be953c887f4780f60dea8e9aae8, type: 2}
 --- !u!4 &2104161019
 Transform:
   m_ObjectHideFlags: 0
@@ -16625,76 +16707,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2104161020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104161017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09695b4d4adebe348b22d8c59a4722ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoothInfoList:
-  - BoothSprite: {fileID: 21300000, guid: 279aea491a485a04b826583b2675ed63, type: 3}
-    itemsSO: {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
-    station: {fileID: 913420254}
-  - BoothSprite: {fileID: 21300000, guid: f4cfbd7442df8f041b47184d58d86dde, type: 3}
-    itemsSO: {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
-    station: {fileID: 113254696}
-  - BoothSprite: {fileID: 21300000, guid: 4c4b7468561a8c64eba313c47f093754, type: 3}
-    itemsSO: {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
-    station: {fileID: 758540767}
-  - BoothSprite: {fileID: 21300000, guid: 84137fe995561924dbffb7a4a2d8b97d, type: 3}
-    itemsSO: {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
-    station: {fileID: 386169913}
-  - BoothSprite: {fileID: 21300000, guid: dd97bd9cc636d3646be149035b440c03, type: 3}
-    itemsSO: {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
-    station: {fileID: 1924679467}
-  - BoothSprite: {fileID: 21300000, guid: 18a970f25afcd3346b894ad31f61cbdb, type: 3}
-    itemsSO: {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
-    station: {fileID: 1423962208}
-  - BoothSprite: {fileID: 21300000, guid: f4b3338f95ffcd44cb76607e03b60e9e, type: 3}
-    itemsSO: {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
-    station: {fileID: 993011463}
-  - BoothSprite: {fileID: 21300000, guid: e3bd3286efde0ff438bd592020018474, type: 3}
-    itemsSO: {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
-    station: {fileID: 125588663}
-  - BoothSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
-    itemsSO: {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
-    station: {fileID: 153484435}
-  ItemSOList:
-  - {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
-  - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
-  - {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
-  - {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
-  - {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
-  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
-  - {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
-  - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
-  - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
-  UpgradeItemSOList:
-  - {fileID: 11400000, guid: be4181d00b2bc9d469d3e1af4202639e, type: 2}
-  - {fileID: 11400000, guid: ffab8d4eba8c772409d5f776ceeb44b4, type: 2}
-  - {fileID: 11400000, guid: 585e3fdd289897940abf8c113442df49, type: 2}
-  - {fileID: 11400000, guid: 26f1497f8cdc1b146b11d312df2ab032, type: 2}
-  - {fileID: 11400000, guid: 7d35f638dee291746a73af6fdd0e5d97, type: 2}
-  - {fileID: 11400000, guid: 18f0c1c7523261741a315474ee6a37fc, type: 2}
-  - {fileID: 11400000, guid: a18898e5084579741a9ef80b996ecdb0, type: 2}
-  - {fileID: 11400000, guid: 397203f5042f44c4b93658d0c8211050, type: 2}
-  - {fileID: 11400000, guid: ca862be953c887f4780f60dea8e9aae8, type: 2}
-  StationPrefab: {fileID: 1407387797405926488, guid: 008502f29e3321c41a816994252968a5, type: 3}
-  CommonColor:
-    serializedVersion: 2
-    rgba: 4294945280
-  UncommonColor:
-    serializedVersion: 2
-    rgba: 0
-  RareColor:
-    serializedVersion: 2
-    rgba: 4278227199
 --- !u!1 &2127558387
 GameObject:
   m_ObjectHideFlags: 0

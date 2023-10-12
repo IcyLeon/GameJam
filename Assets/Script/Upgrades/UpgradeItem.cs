@@ -17,6 +17,7 @@ public class UpgradeItem : MonoBehaviour
     [SerializeField] Color32 buyableColor;
     [SerializeField] Color32 notbuyableColor;
     private UpgradeItemSO upgradeItemSO;
+    private bool bought;
 
     private int itemCost;
 
@@ -24,7 +25,20 @@ public class UpgradeItem : MonoBehaviour
     {
         InventoryManager.GetInstance().onCurrencyValueChanged += AdjustDisplay;
         AdjustDisplay();
-        purchaseButton.onClick.AddListener(Bought);
+        purchaseButton.onClick.AddListener(delegate
+        {
+            Bought();
+            }
+        );
+        bought = false;
+    }
+
+    /// <summary>
+    /// DO NOT USE THIS METHOD OTHER THAN WHEN LOADING IT IN!
+    /// </summary>
+    public void BuyItem()
+    {
+        Bought(true);
     }
 
     public void SetUpgradeItemSO(UpgradeItemSO theUpgradeItemSO)
@@ -34,6 +48,11 @@ public class UpgradeItem : MonoBehaviour
         SetName(upgradeItemSO.itemName);
         SetDescription(upgradeItemSO.itemDescription);
         SetCost(upgradeItemSO.Cost);
+    }
+
+    public UpgradeItemSO GetItemSO()
+    {
+        return upgradeItemSO;
     }
 
     private void SetIcon(Sprite icon)
@@ -59,7 +78,7 @@ public class UpgradeItem : MonoBehaviour
 
     private void AdjustDisplay()
     {
-        if (InventoryManager.GetInstance().GetCoins() < itemCost)
+        if (InventoryManager.GetInstance().GetCoins() < itemCost && !bought)
             MakeNotBuyable();
         else
             MakeBuyable();
@@ -77,15 +96,19 @@ public class UpgradeItem : MonoBehaviour
         costAmtDisplay.color = notbuyableColor;
     }
 
-    private void Bought()
+    private void Bought(bool LoadIn = false)
     {
+        bought = true;
         purchaseButton.interactable = false;
         costAmtDisplay.color = buyableColor;
         costAmtDisplay.text = "BOUGHT";
         coinIcon.SetActive(false);
         InventoryManager im = InventoryManager.GetInstance();
         im.onCurrencyValueChanged -= AdjustDisplay;
-        im.SubtractCoins(itemCost);
+
+        if (!LoadIn)
+            im.SubtractCoins(itemCost);
+
         im.AddUpgradeSO(upgradeItemSO);
     }
 }

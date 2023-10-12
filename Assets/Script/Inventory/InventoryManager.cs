@@ -17,6 +17,10 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         inventory = new Inventory(1000);
+        if (JsonSaveFile.GetInstance() != null)
+        {
+            inventory.LoadData();
+        }
         onCurrencyValueChanged?.Invoke();
     }
 

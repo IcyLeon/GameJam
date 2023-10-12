@@ -16,7 +16,6 @@ public class ItemsSO : ScriptableObject
     /// The multipler that the wrapper will give. Ignore this if the itemSO is a flower
     /// </summary>
     public float multipler;
-    public FlowerTypes flowerType;
     [TextAreaAttribute]
     public string ItemDescription;
 

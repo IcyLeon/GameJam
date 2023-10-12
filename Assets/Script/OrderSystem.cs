@@ -48,12 +48,12 @@ public class OrderSystem : MonoBehaviour
         }
 
         orderList.Add(oi);
-        FinalPriceCalculation.GetInstance().CalculateFinalPrice(oi);
+        //FinalPriceCalculation.GetInstance().CalculateFinalPrice(oi);
     }
 
     private void Update()
     {
-        Debug.Log(orderList.Count);
+        
     }
 
 

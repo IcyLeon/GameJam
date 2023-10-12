@@ -16,8 +16,6 @@ public class Inventory
     public void SetCoins(int amt)
     {
         Coins = amt;
-        if (JsonSaveFile.GetInstance() != null)
-            JsonSaveFile.GetInstance().UpdateCurrency(amt);
     }
 
     public Inventory(int Coins = 0)
@@ -30,8 +28,6 @@ public class Inventory
     public void AddItemsSO(ItemsSO ItemsSO)
     {
         UnlockItemsListSO.Add(ItemsSO);
-        if (JsonSaveFile.GetInstance() != null)
-            JsonSaveFile.GetInstance().UpdateShopItemList(UnlockItemsListSO);
     }
 
     public List<ItemsSO> GetUnlockItemsListSO()
@@ -42,8 +38,6 @@ public class Inventory
     public void AddUpgradeItemSO(UpgradeItemSO upgradeItemSO)
     {
         UnlockUpgradeListSO.Add(upgradeItemSO);
-        if (JsonSaveFile.GetInstance() != null)
-            JsonSaveFile.GetInstance().UpdateUpgradeItemList(UnlockUpgradeListSO);
     }
 
     public List<UpgradeItemSO> GetUnlockedUpgradesListSO()
@@ -51,5 +45,8 @@ public class Inventory
         return UnlockUpgradeListSO;
     }
 
-
+    public void LoadData()
+    {
+        Coins = JsonSaveFile.GetInstance().GetAmt();
+    }
 }
