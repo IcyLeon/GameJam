@@ -12,7 +12,7 @@ public class JsonSaveFile : MonoBehaviour
     //[SerializeField] ItemsSO[] shopItemList;
     //[SerializeField] UpgradeItemSO[] upgradeItemShop;
 
-    private void Awake()
+    private void OnEnable()
     {
         filePath = Application.persistentDataPath + "/saveFile.txt";
         if (instance != null)
@@ -40,9 +40,14 @@ public class JsonSaveFile : MonoBehaviour
         return data.currencyAmt;
     }
 
-    public List<ItemsSO> GetItemSOList()
+    public List<ItemsSO> GetFlowerItemSoList()
     {
-        return data.itemSOList;
+        return data.floweritemSOList;
+    }
+
+    public List<ItemsSO> GetWrapperItemSoList()
+    {
+        return data.wrapperitemSOList;
     }
 
     public List<UpgradeItemSO> GetUpgradeItemSOList()
@@ -56,20 +61,34 @@ public class JsonSaveFile : MonoBehaviour
 
         InventoryManager im = InventoryManager.GetInstance();
         newSaveData.currencyAmt = im.GetCoins();
-        List<ItemsSO> unlockedShopItems = im.GetItemsSOList();
+        List<ItemsSO> unlockedFlowersSO = im.GetFlowersSOList();
+        List<ItemsSO> unlockedWrappersSO = im.GetWrappersSOList();
         List<UpgradeItemSO> unlockedUpgradeItems = im.GetUpgradeItemsSOList();
 
-        ItemsSO[] shopItemList = AssetManager.GetInstance().GetItemsSOList();
+        ItemsSO[] flowerList = AssetManager.GetInstance().GetFlowerItemSOList();
+        ItemsSO[] wrapperList = AssetManager.GetInstance().GetWrapperItemSOList();
         UpgradeItemSO[] upgradeItemList = AssetManager.GetInstance().GetUpgradeItemsSOList();
 
 
-        for (int i = 0; i < unlockedShopItems.Count; i++)
+        for (int i = 0; i < unlockedFlowersSO.Count; i++)
         {
-            for (int x = 0; x < shopItemList.Length; x++)
+            for (int x = 0; x < flowerList.Length; x++)
             {
-                if (unlockedShopItems[i] == shopItemList[x])
+                if (unlockedFlowersSO[i] == flowerList[x])
                 {
-                    newSaveData.unlockedShopItemSOindexList.Add(x);
+                    newSaveData.unlockedFlowerItemSOindexList.Add(x);
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < unlockedWrappersSO.Count; i++)
+        {
+            for (int x = 0; x < wrapperList.Length; x++)
+            {
+                if (unlockedWrappersSO[i] == wrapperList[x])
+                {
+                    newSaveData.unlockedWrapperItemSOindexList.Add(x);
                     break;
                 }
             }
@@ -108,15 +127,22 @@ public class JsonSaveFile : MonoBehaviour
         SaveData loadedData = JsonUtility.FromJson<SaveData>(json);
 
         data.currencyAmt = loadedData.currencyAmt;
-        ItemsSO[] shopItemList = AssetManager.GetInstance().GetItemsSOList();
+        ItemsSO[] flowerItemList = AssetManager.GetInstance().GetFlowerItemSOList();
+        ItemsSO[] wrapperItemList = AssetManager.GetInstance().GetWrapperItemSOList();
         UpgradeItemSO[] upgradeItemShop = AssetManager.GetInstance().GetUpgradeItemsSOList();
 
-        List<ItemsSO> unlockedShopItemList = new List<ItemsSO>();
+        List<ItemsSO> unlockedFlowerItemList = new List<ItemsSO>();
+        List<ItemsSO> unlockedWrapperItemList = new List<ItemsSO>();
         List<UpgradeItemSO> unlockedUpgradeItemList = new List<UpgradeItemSO>();
 
-        for (int i = 0; i < loadedData.unlockedShopItemSOindexList.Count; i++)
+        for (int i = 0; i < loadedData.unlockedFlowerItemSOindexList.Count; i++)
         {
-            data.itemSOList.Add(shopItemList[loadedData.unlockedShopItemSOindexList[i]]);
+            data.floweritemSOList.Add(flowerItemList[loadedData.unlockedFlowerItemSOindexList[i]]);
+        }
+
+        for (int i = 0; i < loadedData.unlockedWrapperItemSOindexList.Count; i++)
+        {
+            data.wrapperitemSOList.Add(wrapperItemList[loadedData.unlockedWrapperItemSOindexList[i]]);
         }
 
         for (int i = 0; i < loadedData.unlockedUpgradeItemSOindexList.Count; i++)
@@ -129,7 +155,8 @@ public class JsonSaveFile : MonoBehaviour
     private class SaveData
     {
         public int currencyAmt;
-        public List<int> unlockedShopItemSOindexList = new List<int>();
+        public List<int> unlockedFlowerItemSOindexList = new List<int>();
+        public List<int> unlockedWrapperItemSOindexList = new List<int>();
         public List<int> unlockedUpgradeItemSOindexList = new List<int>();
     }
 
@@ -137,7 +164,8 @@ public class JsonSaveFile : MonoBehaviour
     private class LoadedData
     {
         public int currencyAmt;
-        public List<ItemsSO> itemSOList = new List<ItemsSO>();
+        public List<ItemsSO> floweritemSOList = new List<ItemsSO>();
+        public List<ItemsSO> wrapperitemSOList = new List<ItemsSO>();
         public List<UpgradeItemSO> upgradeItemSoList = new List<UpgradeItemSO>();
     }
 

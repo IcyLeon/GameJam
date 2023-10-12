@@ -28,9 +28,12 @@ public class ShopManager : MonoBehaviour
     [SerializeField] GameObject DescriptionContent;
     [SerializeField] TextMeshProUGUI TitleTxt, DescTxt;
 
+    private bool runOnce;
+
     // Start is called before the first frame update
     void Start()
     {
+        runOnce = false;
         PurchaseBtn.onClick.AddListener(delegate
         {
             PurchaseInfo();
@@ -60,26 +63,7 @@ public class ShopManager : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        if (JsonSaveFile.GetInstance() !=  null)
-        {
-            List<ItemsSO> shopItemSOList = JsonSaveFile.GetInstance().GetItemSOList();
-            ShopItemButton[] shopItemList = GetComponentsInChildren<ShopItemButton>();
-
-            for (int i = 0; i < shopItemSOList.Count; i++)
-            {
-                for (int x = 0; x < shopItemList.Length; x++)
-                {
-                    if (shopItemSOList[i] == shopItemList[x].GetItemsSO())
-                    {
-                        currentShopItemButtonSelected = shopItemList[x];
-                        PurchaseInfo(true);
-                        currentShopItemButtonSelected.Purchased();
-                        break;
-                    }
-                }
-            }
-            currentShopItemButtonSelected = null;
-        }
+        AutoBuyLoadedFlowers();
     }
 
     // action
@@ -115,9 +99,20 @@ public class ShopManager : MonoBehaviour
                 station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
                 station.gameObject.SetActive(true);
                 OrderSystem.GetInstance().AddStationToList(station);
-                InventoryManager.GetInstance().AddItemsSO(currentShopItemButtonSelected.GetItemsSO());
+                InventoryManager.GetInstance().AddFlowersSO(currentShopItemButtonSelected.GetItemsSO());
 
                 //OrderSystem.GetInstance().AddStationToList(station);
+            }
+            else
+            {
+                if (!runOnce)
+                {
+                    Station station = AssetManager.GetInstance().GetStation(currentShopItemButtonSelected.GetItemsSO());
+                    station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
+                    OrderSystem.GetInstance().AddStationToList(station);
+                    runOnce = true;
+                }
+                InventoryManager.GetInstance().AddWrappersSO(currentShopItemButtonSelected.GetItemsSO());
             }
         }
         else
@@ -142,6 +137,73 @@ public class ShopManager : MonoBehaviour
     public void SetPopUpActive(bool active)
     {
         PurchaseFailedPopUp.SetActive(active);
+    }
+
+    /// <summary>
+    /// Autobuy rose and 1st wrapper. Also load in flowers that the player unlocked from the save file
+    /// </summary>
+    void AutoBuyLoadedFlowers()
+    {
+        ShopItemButton[] shopItemList = GetComponentsInChildren<ShopItemButton>();
+        ItemsSO rose = AssetManager.GetInstance().GetFlowerItemSOList()[0];
+        ItemsSO wrapper = AssetManager.GetInstance().GetWrapperItemSOList()[0];
+
+        for (int i = 0; i < shopItemList.Length; i++)
+        {
+            if (shopItemList[i].GetItemsSO() == rose)
+            {
+                GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.FLOWER;
+                currentShopItemButtonSelected = shopItemList[i];
+                PurchaseInfo(true);
+                currentShopItemButtonSelected.Purchased();
+            }
+
+            else if (shopItemList[i].GetItemsSO() == wrapper)
+            {
+                GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.WRAPPER;
+                currentShopItemButtonSelected = shopItemList[i];
+                PurchaseInfo(true);
+                currentShopItemButtonSelected.Purchased();
+            }
+        }
+
+        if (JsonSaveFile.GetInstance() != null)
+        {
+            List<ItemsSO> flowerSOList = JsonSaveFile.GetInstance().GetFlowerItemSoList();
+            List<ItemsSO> wrapperSOList = JsonSaveFile.GetInstance().GetWrapperItemSoList();
+
+            GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.FLOWER;
+            for (int i = 0; i < flowerSOList.Count; i++)
+            {
+                for (int x = 0; x < shopItemList.Length; x++)
+                {
+                    if (flowerSOList[i] == shopItemList[x].GetItemsSO() && flowerSOList[i] != rose)
+                    {
+                        currentShopItemButtonSelected = shopItemList[x];
+                        PurchaseInfo(true);
+                        currentShopItemButtonSelected.Purchased();
+                        break;
+                    }
+                }
+            }
+
+            GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.WRAPPER;
+            for (int i = 0; i < wrapperSOList.Count; i++)
+            {
+                for (int x = 0; x < shopItemList.Length; x++)
+                {
+                    if (wrapperSOList[i] == shopItemList[x].GetItemsSO() && wrapperSOList[i] != wrapper)
+                    {
+                        currentShopItemButtonSelected = shopItemList[x];
+                        PurchaseInfo(true);
+                        currentShopItemButtonSelected.Purchased();
+                        break;
+                    }
+                }
+            }
+
+            currentShopItemButtonSelected = null;
+        }
     }
 }
 

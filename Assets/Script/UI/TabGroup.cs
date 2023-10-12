@@ -7,7 +7,7 @@ public class TabGroup : MonoBehaviour
     [SerializeField] TabButton[] tabButtonList;
     public TabButton selectedTab;
 
-    private void Awake()
+    private void Start()
     {
         ResetTabs();
     }

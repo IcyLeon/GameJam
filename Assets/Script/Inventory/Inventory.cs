@@ -5,7 +5,8 @@ using UnityEngine;
 public class Inventory
 {
     private int Coins;
-    private List<ItemsSO> UnlockItemsListSO;
+    private List<ItemsSO> UnlockFlowerListSO;
+    private List<ItemsSO> UnlockWrapperListSO;
     private List<UpgradeItemSO> UnlockUpgradeListSO;
 
     public int GetCoins()
@@ -21,18 +22,29 @@ public class Inventory
     public Inventory(int Coins = 0)
     {
         this.Coins = Coins;
-        UnlockItemsListSO = new();
+        UnlockFlowerListSO = new();
+        UnlockWrapperListSO = new();
         UnlockUpgradeListSO = new();
     }
 
-    public void AddItemsSO(ItemsSO ItemsSO)
+    public void AddFlowerSO(ItemsSO ItemsSO)
     {
-        UnlockItemsListSO.Add(ItemsSO);
+        UnlockFlowerListSO.Add(ItemsSO);
     }
 
-    public List<ItemsSO> GetUnlockItemsListSO()
+    public List<ItemsSO> GetUnlockFlowerListSO()
     {
-        return UnlockItemsListSO;
+        return UnlockFlowerListSO;
+    }
+
+    public void AddWraperSO(ItemsSO ItemsSO)
+    {
+        UnlockWrapperListSO.Add(ItemsSO);
+    }
+
+    public List<ItemsSO> GetUnlockWrapperListSO()
+    {
+        return UnlockWrapperListSO;
     }
 
     public void AddUpgradeItemSO(UpgradeItemSO upgradeItemSO)

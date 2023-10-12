@@ -141,9 +141,14 @@ public class AssetManager : MonoBehaviour
         return null;
     }
 
-    public ItemsSO[] GetItemsSOList()
+    public ItemsSO[] GetFlowerItemSOList()
     {
-        return ItemSOList;
+        return FlowerItemSOList;
+    }
+
+    public ItemsSO[] GetWrapperItemSOList()
+    {
+        return WrapperItemSOList;
     }
 
     public UpgradeItemSO[] GetUpgradeItemsSOList()

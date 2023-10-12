@@ -19,7 +19,8 @@ public class OrderSystem : MonoBehaviour
     {
         for (int i = 0; i < AssetManager.GetInstance().GetBoothInfo().Length; i++)
         {
-            AssetManager.GetInstance().GetBoothInfo()[i].station.gameObject.SetActive(false);
+            if (i + 1 != AssetManager.GetInstance().GetBoothInfo().Length)
+                AssetManager.GetInstance().GetBoothInfo()[i].station.gameObject.SetActive(false);
         }
     }
 

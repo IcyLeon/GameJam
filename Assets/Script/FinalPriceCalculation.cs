@@ -39,6 +39,11 @@ public class FinalPriceCalculation : MonoBehaviour
             totalPrice += CalculateModifierApplied(itemSOList[i]);
         }
 
+        // Get the wrapperList
+        totalPrice *= InventoryManager.GetInstance().GetMostMultiplerWrapper().multipler;
+
+
+
         return (int)totalPrice;
     }
 

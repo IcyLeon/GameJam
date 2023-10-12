@@ -8828,20 +8828,28 @@ MonoBehaviour:
   - BoothSprite: {fileID: 21300000, guid: 570b8e14fde16b04488c2821e4dfc91c, type: 3}
     itemsSO: {fileID: 11400000, guid: 0ab3ad5773a8ca6438138f8ab1e4c16d, type: 2}
     station: {fileID: 940954974}
+  UpgradeItemSOList:
+  - {fileID: 11400000, guid: be4181d00b2bc9d469d3e1af4202639e, type: 2}
+  - {fileID: 11400000, guid: ffab8d4eba8c772409d5f776ceeb44b4, type: 2}
+  - {fileID: 11400000, guid: 585e3fdd289897940abf8c113442df49, type: 2}
+  - {fileID: 11400000, guid: 26f1497f8cdc1b146b11d312df2ab032, type: 2}
+  - {fileID: 11400000, guid: 7d35f638dee291746a73af6fdd0e5d97, type: 2}
+  - {fileID: 11400000, guid: 18f0c1c7523261741a315474ee6a37fc, type: 2}
+  - {fileID: 11400000, guid: a18898e5084579741a9ef80b996ecdb0, type: 2}
+  - {fileID: 11400000, guid: 397203f5042f44c4b93658d0c8211050, type: 2}
+  - {fileID: 11400000, guid: ca862be953c887f4780f60dea8e9aae8, type: 2}
   FlowerItemSOList:
-  - {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
-  - {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
-  - {fileID: 11400000, guid: be32cfac3cadd4d499413644f2cd2048, type: 2}
-  - {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
-  - {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
-  - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
-  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
-  - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
   - {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
   - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
+  - {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
+  - {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
+  - {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
+  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}
+  - {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
+  - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
+  - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}
   WrapperItemSOList:
   - {fileID: 11400000, guid: 0ab3ad5773a8ca6438138f8ab1e4c16d, type: 2}
-  UpgradeItemSOList: []
   StationPrefab: {fileID: 1407387797405926488, guid: 008502f29e3321c41a816994252968a5, type: 3}
   CommonColor:
     serializedVersion: 2
@@ -12195,6 +12203,8 @@ MonoBehaviour:
     queueREF: {fileID: 483071960}
   - ServingWaypointTransform: {fileID: 16597238}
     queueREF: {fileID: 555726241}
+  maxTimeIntervalBetweenCustomer: 15
+  minTimeIntervalBetweenCustomer: 5
 --- !u!1 &934795295
 GameObject:
   m_ObjectHideFlags: 0
@@ -12514,6 +12524,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963898709}
   m_CullTransparentMesh: 1
+--- !u!1 &975257662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975257664}
+  - component: {fileID: 975257663}
+  m_Layer: 0
+  m_Name: SaveFile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &975257663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975257662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ca0d3ed21e0e94db0ee77bd850a7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &975257664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975257662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003575984
 GameObject:
   m_ObjectHideFlags: 0

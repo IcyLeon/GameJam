@@ -34,7 +34,7 @@ public class NPC : MoveableObjects
     private void RandomGenerateItem()
     {
         // Get the list of unlocked ItemSO
-        List<ItemsSO> unlockedItemList = InventoryManager.GetInstance().GetItemsSOList();
+        List<ItemsSO> unlockedItemList = InventoryManager.GetInstance().GetFlowersSOList();
         List<ItemsSO> generatedItemList = new();
 
         if (unlockedItemList.Count == 0)
@@ -73,10 +73,7 @@ public class NPC : MoveableObjects
             }
         }
 
-        List<ItemsSO> UnlockWrapperList = InventoryManager.GetInstance().GetAllWrapperList(unlockedItemList);
-        int num = Random.Range(0, UnlockWrapperList.Count);
-        ItemsSO WrapperItem = AssetManager.GetInstance().GetWrapperItemsSO(UnlockWrapperList[num]);
-
+        ItemsSO WrapperItem = InventoryManager.GetInstance().GetWrappersSOList()[0];
         if (WrapperItem != null)
         {
             Item item = new Item(WrapperItem, 1);

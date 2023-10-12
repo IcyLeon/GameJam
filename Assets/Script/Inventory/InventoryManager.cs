@@ -66,19 +66,34 @@ public class InventoryManager : MonoBehaviour
         return inventory.GetCoins();
     }
 
-    public void AddItemsSO(ItemsSO itemSO)
+    public void AddFlowersSO(ItemsSO itemSO)
     {
         if (inventory == null)
             return;
-        inventory.AddItemsSO(itemSO);
+        inventory.AddFlowerSO(itemSO);
     }
 
-    public List<ItemsSO> GetItemsSOList()
+    public List<ItemsSO> GetFlowersSOList()
     {
         if (inventory == null)
             return null;
 
-        return inventory.GetUnlockItemsListSO();
+        return inventory.GetUnlockFlowerListSO();
+    }
+
+    public void AddWrappersSO(ItemsSO itemSO)
+    {
+        if (inventory == null)
+            return;
+        inventory.AddWraperSO(itemSO);
+    }
+
+    public List<ItemsSO> GetWrappersSOList()
+    {
+        if (inventory == null)
+            return null;
+
+        return inventory.GetUnlockWrapperListSO();
     }
 
     public void AddUpgradeSO(UpgradeItemSO upgradeItemSO)
@@ -94,5 +109,24 @@ public class InventoryManager : MonoBehaviour
             return null;
 
         return inventory.GetUnlockedUpgradesListSO();
-    }    
+    }
+
+    public ItemsSO GetMostMultiplerWrapper()
+    {
+        List<ItemsSO> wrapperList = inventory.GetUnlockWrapperListSO();
+        if (wrapperList != null && wrapperList.Count > 0)
+        {
+            ItemsSO currentWrapper = wrapperList[0];
+
+            for (int i = 1; i < wrapperList.Count; i++)
+            {
+                if (wrapperList[i].multipler > currentWrapper.multipler)
+                {
+                    currentWrapper = wrapperList[i];
+                }
+            }
+            return currentWrapper;
+        }
+        return null;
+    }
 }
