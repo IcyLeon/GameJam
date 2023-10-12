@@ -72,6 +72,8 @@ public class NPC : MoveableObjects
     protected override void Update()
     {
         UpdateState();
+        base.Update();
+        
     }
 
     private void SetupItemImages()
@@ -88,7 +90,7 @@ public class NPC : MoveableObjects
         }
     }
 
-    private void UpdateState()
+    protected override void UpdateState()
     {
         switch(state)
         {
