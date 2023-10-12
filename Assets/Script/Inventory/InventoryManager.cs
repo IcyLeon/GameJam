@@ -63,4 +63,19 @@ public class InventoryManager : MonoBehaviour
 
         return inventory.GetUnlockItemsListSO();
     }
+
+    public void AddUpgradeSO(UpgradeItemSO upgradeItemSO)
+    {
+        if (inventory == null)
+            return;
+        inventory.AddUpgradeItemSO(upgradeItemSO);
+    }
+
+    public List<UpgradeItemSO> GetUpgradeItemsSOList()
+    {
+        if (inventory == null)
+            return null;
+
+        return inventory.GetUnlockedUpgradesListSO();
+    }    
 }

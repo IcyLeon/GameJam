@@ -29,7 +29,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI TitleTxt, DescTxt;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         PurchaseBtn.onClick.AddListener(PurchaseInfo);
         // Create the flower shop item in the flowerShop list

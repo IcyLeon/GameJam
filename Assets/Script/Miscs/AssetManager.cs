@@ -8,6 +8,8 @@ public enum Rarity
     COMMON,
     UNCOMMON,
     RARE,
+    NONE,
+    ALL,
 }
 
 public enum FlowerTypes
@@ -16,12 +18,13 @@ public enum FlowerTypes
     ROSE,
     TULIP,
     DAISY,
-    BABY_BREATH,
+    SUNFLOWER,
     LILY_OF_THE_VALLEY,
     ORCHID,
     LAVENDER,
     MOONFLOWER,
     PEONY,
+    ALL,
 }
 
 public enum WrapTypes
@@ -40,7 +43,8 @@ public class AssetManager : MonoBehaviour
         public Station station;
     }
     [SerializeField] BoothInfo[] BoothInfoList;
-    [SerializeField] ItemsSO[] ItemSOList; 
+    [SerializeField] ItemsSO[] ItemSOList;
+    [SerializeField] UpgradeItemSO[] UpgradeItemSOList;
 
     public event Action onSelectedClick;
     private Station SelectedStation;
@@ -148,6 +152,11 @@ public class AssetManager : MonoBehaviour
                 return GetItemsSOList()[i];
         }
         return null;
+    }
+
+    public UpgradeItemSO[] GetUpgradeItemsSOList()
+    {
+        return UpgradeItemSOList;
     }
     //public ItemsSO GetItemsSOByFlowerTypes(WrapTypes wrapTypes)
     //{

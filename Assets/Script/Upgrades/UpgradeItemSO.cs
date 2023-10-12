@@ -11,4 +11,6 @@ public class UpgradeItemSO : ScriptableObject
     public Sprite itemSprite;
     public int Cost;
     public float multiplerIfAny = 1.0f;
+    public FlowerTypes affectedFlowerTypes;
+    public Rarity affectedRarity;
 }

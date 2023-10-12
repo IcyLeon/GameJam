@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: TulipUpgrade
   m_EditorClassIdentifier: 
   itemName: Tulip Price Upgrade
-  itemDescription: Double the price of Tulip
-  itemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+  itemDescription: Double the selling price of Tulip
+  itemSprite: {fileID: 21300000, guid: 52f5d89704714624691a2612042c040d, type: 3}
   Cost: 600
   multiplerIfAny: 2
+  affectedFlowerTypes: 2
+  affectedRarity: 3

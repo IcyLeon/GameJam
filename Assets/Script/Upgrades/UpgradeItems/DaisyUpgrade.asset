@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: DaisyUpgrade
   m_EditorClassIdentifier: 
   itemName: Daisy Price Upgrade
-  itemDescription: Double the price of daisy
-  itemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+  itemDescription: Double the selling price of daisy
+  itemSprite: {fileID: 21300000, guid: f705fbe9631f0f44f93f426d27d94690, type: 3}
   Cost: 9000
   multiplerIfAny: 2
+  affectedFlowerTypes: 3
+  affectedRarity: 3

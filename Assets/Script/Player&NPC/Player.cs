@@ -45,32 +45,32 @@ public class Player : MoveableObjects
             MoveMoveableObjects_PathFind(CurrentPos, EndPos);
         }
 
-        switch (playerState)
-        {
-            case PlayerState.IDLE:
-                {
-                    if (OrderSystem.GetInstance().GetOrder() != null)
-                    {
-                        Transform ClosestWaypoint = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothStation(FlowerTypes.TULIP));
-                        if (ClosestWaypoint != null)
-                        {
-                            //StartOrder(OrderSystem.GetInstance().GetOrder());
-                            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-                            Vector2Int ClosestWaypointPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).x, mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).y);
-                            Debug.Log(ClosestWaypointPos);
-                            MoveMoveableObjects_PathFind(CurrentPos, ClosestWaypointPos);
-                            playerState = PlayerState.COLLECTING;
-                        }
-                    }
+        //switch (playerState)
+        //{
+        //    case PlayerState.IDLE:
+        //        {
+        //            if (OrderSystem.GetInstance().GetOrder() != null)
+        //            {
+        //                Transform ClosestWaypoint = CheckNearestFlowerPos(OrderSystem.GetInstance().GetFlowerBoothStation(FlowerTypes.TULIP));
+        //                if (ClosestWaypoint != null)
+        //                {
+        //                    //StartOrder(OrderSystem.GetInstance().GetOrder());
+        //                    Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+        //                    Vector2Int ClosestWaypointPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).x, mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).y);
+        //                    Debug.Log(ClosestWaypointPos);
+        //                    MoveMoveableObjects_PathFind(CurrentPos, ClosestWaypointPos);
+        //                    playerState = PlayerState.COLLECTING;
+        //                }
+        //            }
 
-                    break;
-                }
+        //            break;
+        //        }
 
-            case PlayerState.COLLECTING:
-                {
-                    break;
-                }
-        }
+        //    case PlayerState.COLLECTING:
+        //        {
+        //            break;
+        //        }
+        //}
     }
 
     Transform CheckNearestFlowerPos(Station station)

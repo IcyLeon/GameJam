@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: RoseUpgrade
   m_EditorClassIdentifier: 
   itemName: Rose Price Upgrade
-  itemDescription: Double the price of roses
-  itemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+  itemDescription: Double the selling price of roses
+  itemSprite: {fileID: 21300000, guid: b7f658d99bb5ee542b9c4c00eb3566ce, type: 3}
   Cost: 120
   multiplerIfAny: 2
+  affectedFlowerTypes: 1
+  affectedRarity: 3

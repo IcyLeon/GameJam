@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3cbe9a4a83ec564c9e258c1f42140ed, type: 3}
-  m_Name: MoonflowerUpgrade
+  m_Name: CommonUpgrade
   m_EditorClassIdentifier: 
-  itemName: Moonflower Price Upgrade
-  itemDescription: Double the selling price of Moonflower
-  itemSprite: {fileID: 21300000, guid: 30a9f08167033ae42a6a6ace4f109f5b, type: 3}
-  Cost: 82000000
-  multiplerIfAny: 2
-  affectedFlowerTypes: 8
-  affectedRarity: 3
+  itemName: 
+  itemDescription: 
+  itemSprite: {fileID: 0}
+  Cost: 0
+  multiplerIfAny: 1
+  affectedFlowerTypes: 0
+  affectedRarity: 0

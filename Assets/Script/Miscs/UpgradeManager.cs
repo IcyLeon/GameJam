@@ -15,22 +15,28 @@ public class UpgradeManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        gameObject.SetActive(false);
     }
 
-    [SerializeField] UpgradeItemSO[] upgradeItemList;
+    private UpgradeItemSO[] upgradeItemList;
     [SerializeField] Transform UpgradeContentParent;
     [SerializeField] GameObject upgradeItemButton;
 
     private void Start()
     {
+        upgradeItemList = AssetManager.GetInstance().GetUpgradeItemsSOList();
         for (int i = 0; i < upgradeItemList.Length; i++)
         {
             GameObject go = Instantiate(upgradeItemButton, UpgradeContentParent);
             UpgradeItem ui = go.GetComponent<UpgradeItem>();
-            ui.SetIcon(upgradeItemList[i].itemSprite);
-            ui.SetName(upgradeItemList[i].itemName);
-            ui.SetDescription(upgradeItemList[i].itemDescription);
-            ui.SetCost(upgradeItemList[i].Cost);
+            ui.SetUpgradeItemSO(upgradeItemList[i]);
+        }
+
+        if (JsonSaveFile.GetInstance() != null)
+        {
+
         }
     }
+
+
 }

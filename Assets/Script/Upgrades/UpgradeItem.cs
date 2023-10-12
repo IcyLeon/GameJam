@@ -16,6 +16,7 @@ public class UpgradeItem : MonoBehaviour
     [Header("TextColor")]
     [SerializeField] Color32 buyableColor;
     [SerializeField] Color32 notbuyableColor;
+    private UpgradeItemSO upgradeItemSO;
 
     private int itemCost;
 
@@ -26,22 +27,31 @@ public class UpgradeItem : MonoBehaviour
         purchaseButton.onClick.AddListener(Bought);
     }
 
-    public void SetIcon(Sprite icon)
+    public void SetUpgradeItemSO(UpgradeItemSO theUpgradeItemSO)
+    {
+        upgradeItemSO = theUpgradeItemSO;
+        SetIcon(upgradeItemSO.itemSprite);
+        SetName(upgradeItemSO.itemName);
+        SetDescription(upgradeItemSO.itemDescription);
+        SetCost(upgradeItemSO.Cost);
+    }
+
+    private void SetIcon(Sprite icon)
     {
         upgradeIcon.sprite = icon;
     }
 
-    public void SetName(string name)
+    private void SetName(string name)
     {
         upgradeName.text = name;
     }
 
-    public void SetDescription(string description)
+    private void SetDescription(string description)
     {
         upgradeDescription.text = description;
     }
 
-    public void SetCost(int cost)
+    private void SetCost(int cost)
     {
         itemCost = cost;
         costAmtDisplay.text = AssetManager.GetInstance().AdjustCurrencyDisplay(itemCost);
@@ -54,7 +64,6 @@ public class UpgradeItem : MonoBehaviour
         else
             MakeBuyable();
     }
-
 
     private void MakeBuyable()
     {
@@ -77,5 +86,6 @@ public class UpgradeItem : MonoBehaviour
         InventoryManager im = InventoryManager.GetInstance();
         im.onCurrencyValueChanged -= AdjustDisplay;
         im.SubtractCoins(itemCost);
+        im.AddUpgradeSO(upgradeItemSO);
     }
 }

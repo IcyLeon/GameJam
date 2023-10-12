@@ -58,6 +58,7 @@ public class OrderSystem : MonoBehaviour
         }
 
         orderList.Add(oi);
+        FinalPriceCalculation.GetInstance().CalculateFinalPrice(oi);
     }
 
 

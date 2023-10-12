@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: PeonyUpgrade
   m_EditorClassIdentifier: 
   itemName: Peony
-  itemDescription: Double the price of peony
-  itemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+  itemDescription: Double the selling price of peony
+  itemSprite: {fileID: 21300000, guid: 2807001aef882b1448c673a7fe2a7e9b, type: 3}
   Cost: 162000000
   multiplerIfAny: 2
+  affectedFlowerTypes: 9
+  affectedRarity: 3

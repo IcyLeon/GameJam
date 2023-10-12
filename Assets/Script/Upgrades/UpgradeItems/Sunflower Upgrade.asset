@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3cbe9a4a83ec564c9e258c1f42140ed, type: 3}
-  m_Name: BabyBreathUpgrade
+  m_Name: Sunflower Upgrade
   m_EditorClassIdentifier: 
-  itemName: Baby Breath Price Upgrade
-  itemDescription: Double the price of Bay Breath
-  itemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+  itemName: Sunflower Price Upgrade
+  itemDescription: Double the selling price of Sunflower
+  itemSprite: {fileID: 21300000, guid: 76b5cf171cd367e429e0d550c0419834, type: 3}
   Cost: 132000
   multiplerIfAny: 2
+  affectedFlowerTypes: 4
+  affectedRarity: 3

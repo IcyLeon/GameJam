@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: LilyOfTheValleyUpgrade
   m_EditorClassIdentifier: 
   itemName: Lily Price Upgrade
-  itemDescription: Double the price of Lily of the Valley
-  itemSprite: {fileID: 21300000, guid: dbe9b269a4ae55e4f81511f097dcd89c, type: 3}
+  itemDescription: Double the selling price of Lily of the Valley
+  itemSprite: {fileID: 21300000, guid: 512be8bc0aed38f4c81fd106218345df, type: 3}
   Cost: 612000
   multiplerIfAny: 2
+  affectedFlowerTypes: 5
+  affectedRarity: 3
