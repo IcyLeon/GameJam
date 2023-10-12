@@ -35,15 +35,23 @@ public class Player : MoveableObjects
 
     protected override void Update()
     {
+        Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
+
         if (Input.GetMouseButtonDown(1))
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
 
-            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
             Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
             MoveMoveableObjects_PathFind(CurrentPos, EndPos);
         }
+
+        base.Update();
+    }
+
+    protected override void UpdateState()
+    {
+        Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
         if (OrderSystem.GetInstance().GetOrder() == null)
         {
             if (timerCoroutine != null)
@@ -68,7 +76,6 @@ public class Player : MoveableObjects
                     Transform ClosestWaypoint = CheckNearestFlowerPos(orderSystem.GetBoothStation(currentItemPreparing));
                     if (ClosestWaypoint != null)
                     {
-                        Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
                         Vector2Int ClosestWaypointPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).x, mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).y);
                         MoveMoveableObjects_PathFind(CurrentPos, ClosestWaypointPos);
                         playerState = PlayerState.COLLECTING;
@@ -87,16 +94,14 @@ public class Player : MoveableObjects
                 {
                     playerState = PlayerState.MOVING;
                 }
-                else {
+                else
+                {
                     if (!isMoving())
                     {
                         QueueSystem queueSystem = QueueSystem.GetInstance();
                         Transform ClosestWaypoint = queueSystem.GetFIFOWaypointTransform(queueSystem.GetFirstQueueFIFO());
-                        Debug.Log(ClosestWaypoint);
-                        Debug.Log(queueSystem.GetFirstQueueFIFO());
                         if (ClosestWaypoint != null)
                         {
-                            Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
                             Vector2Int ClosestWaypointPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).x, mapManager.GetMainTileMap().WorldToCell(ClosestWaypoint.position).y);
                             MoveMoveableObjects_PathFind(CurrentPos, ClosestWaypointPos);
                             playerState = PlayerState.SERVED;
