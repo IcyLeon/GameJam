@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,15 @@ using UnityEngine.UIElements;
 
 public class QueueSystem : MonoBehaviour
 {
+    [Serializable]
+    public class QueueWaypoint
+    {
+        public Transform ServingWaypointTransform;
+        public QueueRowManager queueREF;
+    }
     private static QueueSystem instance;
-    public Transform[] EntrancePosition;
+    [SerializeField] Transform[] EntrancePosition;
+    [SerializeField] QueueWaypoint[] ServingQueueWaypoint;
     private QueueRowManager[] RowsQueue;
     private NPCManager npcManager;
 
@@ -43,6 +51,54 @@ public class QueueSystem : MonoBehaviour
             }
         }
 
+    }
+
+    public Transform GetFIFOWaypointTransform(QueueRowManager queue)
+    {
+        for (int i = 0; i < ServingQueueWaypoint.Length; i++)
+        {
+            QueueWaypoint queueWaypoint = ServingQueueWaypoint[i];
+            if (queueWaypoint.queueREF == queue)
+                return queueWaypoint.ServingWaypointTransform;
+        }
+        return null;
+    }
+    public NPC GetNPCTobeServed()
+    {
+        QueueRowManager queue = GetFirstQueueFIFO();
+        if (queue == null)
+            return null;
+
+        return queue.GetFirstInQueue();
+    }
+
+    public QueueRowManager GetFirstQueueFIFO()
+    {
+        if (RowsQueue.Length == 0)
+        {
+            return null;
+        }
+
+        QueueRowManager queue = RowsQueue[0];
+
+        for (int i = 0; i < RowsQueue.Length; i++) // Start the loop from the second element
+        {
+            QueueRowManager row = RowsQueue[i];
+
+            if (row.GetFirstInQueue() && queue.GetFirstInQueue())
+            {
+                if (row.GetFirstInQueue().GetWaitingTime() < queue.GetFirstInQueue().GetWaitingTime())
+                {
+                    queue = row;
+                }
+            }
+            if (row.GetFirstInQueue())
+            {
+                queue = row;
+            }
+        }
+
+        return queue;
     }
 
 
