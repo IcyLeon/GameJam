@@ -51,12 +51,6 @@ public class OrderSystem : MonoBehaviour
         //FinalPriceCalculation.GetInstance().CalculateFinalPrice(oi);
     }
 
-    private void Update()
-    {
-        
-    }
-
-
     /// <summary>
     /// Call this function to get the first item in the orderList. returns null if there is none
     /// </summary>
