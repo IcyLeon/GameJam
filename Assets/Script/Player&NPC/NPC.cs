@@ -134,7 +134,6 @@ public class NPC : MoveableObjects
         if (state == NPCState.LEAVING)
         {
             togglePanel(false);
-            QueueSystem.GetInstance().LeaveNPCFromQueue(this);
         }
         SetState(state);
     }

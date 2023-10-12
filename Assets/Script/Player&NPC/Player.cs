@@ -92,6 +92,8 @@ public class Player : MoveableObjects
                     {
                         QueueSystem queueSystem = QueueSystem.GetInstance();
                         Transform ClosestWaypoint = queueSystem.GetFIFOWaypointTransform(queueSystem.GetFirstQueueFIFO());
+                        Debug.Log(ClosestWaypoint);
+                        Debug.Log(queueSystem.GetFirstQueueFIFO());
                         if (ClosestWaypoint != null)
                         {
                             Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
@@ -106,6 +108,7 @@ public class Player : MoveableObjects
                 if (!isMoving())
                 {
                     QueueSystem queueSystem = QueueSystem.GetInstance();
+
                     queueSystem.LeaveNPCFromQueue(queueSystem.GetNPCTobeServed());
                     playerState = PlayerState.IDLE;
                 }

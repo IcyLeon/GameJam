@@ -81,20 +81,16 @@ public class QueueSystem : MonoBehaviour
 
         QueueRowManager queue = RowsQueue[0];
 
-        for (int i = 0; i < RowsQueue.Length; i++) // Start the loop from the second element
+        for (int i = 1; i < RowsQueue.Length; i++) // Start the loop from the second element
         {
             QueueRowManager row = RowsQueue[i];
 
-            if (row.GetFirstInQueue() && queue.GetFirstInQueue())
+            if (row.GetFirstInQueue())
             {
-                if (row.GetFirstInQueue().GetWaitingTime() < queue.GetFirstInQueue().GetWaitingTime())
+                if (!queue.GetFirstInQueue() || row.GetFirstInQueue().GetWaitingTime() > queue.GetFirstInQueue().GetWaitingTime())
                 {
                     queue = row;
                 }
-            }
-            if (row.GetFirstInQueue())
-            {
-                queue = row;
             }
         }
 

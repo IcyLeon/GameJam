@@ -50,12 +50,6 @@ public class OrderSystem : MonoBehaviour
         orderList.Add(oi);
     }
 
-    private void Update()
-    {
-        Debug.Log(orderList.Count);
-    }
-
-
     /// <summary>
     /// Call this function to get the first item in the orderList. returns null if there is none
     /// </summary>
