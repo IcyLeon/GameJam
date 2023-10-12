@@ -20,6 +20,19 @@ public class InventoryManager : MonoBehaviour
         onCurrencyValueChanged?.Invoke();
     }
 
+    public List<ItemsSO> GetAllWrapperList(List<ItemsSO> ItemSOList)
+    {
+        List<ItemsSO> itemSOList = new();
+        for (int i = 0; i < ItemSOList.Count; i++)
+        {
+            ItemsSO itemSO = AssetManager.GetInstance().GetWrapperItemsSO(ItemSOList[i]);
+            if (itemSO != null)
+            {
+                itemSOList.Add(itemSO);
+            }
+        }
+        return itemSOList;
+    }
     public static InventoryManager GetInstance()
     {
         return instance;

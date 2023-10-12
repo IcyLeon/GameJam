@@ -43,9 +43,10 @@ public class NPC : MoveableObjects
         // Generate a total of 3 different flower type acoording to what player has unlocked
         for (int i = 0; i < MaxAmount; i++)
         {
-            int num = Random.Range(0, unlockedItemList.Count);
-            generatedItemList.Add(unlockedItemList[num]);
+            int nums = Random.Range(0, unlockedItemList.Count);
+            generatedItemList.Add(unlockedItemList[nums]);
         }
+
 
         // Create a dictonary to get any similar occurence
         Dictionary<ItemsSO, int> amtOfFlowerTypes = new Dictionary<ItemsSO, int>();
@@ -64,7 +65,21 @@ public class NPC : MoveableObjects
         // for every Key in the dictionary, create a new "Item" and add it into the itemList
         foreach (var itemsSO in amtOfFlowerTypes.Keys)
         {
-            Item item = new Item(AssetManager.GetInstance().GetItemsSO(itemsSO), amtOfFlowerTypes[itemsSO]);
+            ItemsSO itemsSOREF = AssetManager.GetInstance().GetFlowerItemsSO(itemsSO);
+            if (itemsSOREF != null)
+            {
+                Item itemREF = new Item(itemsSOREF, amtOfFlowerTypes[itemsSOREF]);
+                ItemsList.Add(itemREF);
+            }
+        }
+
+        List<ItemsSO> UnlockWrapperList = InventoryManager.GetInstance().GetAllWrapperList(unlockedItemList);
+        int num = Random.Range(0, UnlockWrapperList.Count);
+        ItemsSO WrapperItem = AssetManager.GetInstance().GetWrapperItemsSO(UnlockWrapperList[num]);
+
+        if (WrapperItem != null)
+        {
+            Item item = new Item(WrapperItem, 1);
             ItemsList.Add(item);
         }
     }
@@ -78,7 +93,7 @@ public class NPC : MoveableObjects
 
     private void SetupItemImages()
     {
-        for (int i = 0; i < ItemsList.Count; i++)
+        for (int i = 0; i < ItemsList.Count - 1; i++)
         {
             ItemSlot itemSlot = Instantiate(ItemSlotPrefab, ItemContainer).GetComponent<ItemSlot>();
             ItemSlotList.Add(itemSlot);

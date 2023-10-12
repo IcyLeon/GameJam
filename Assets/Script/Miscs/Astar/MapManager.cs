@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     private Dictionary<Vector2Int, PathFindingNode> pathFindingNodesDictionary = new();
 
     [SerializeField] Tilemap tilemap;
-    [SerializeField] Tilemap tilemap_Collider;
+    [SerializeField] Tilemap tilemap_Collider, tilemap_Collider2;
     [SerializeField] GameObject PathFindingNodePrefab;
     [SerializeField] Transform PathFindingNodeContainer;
 
@@ -35,6 +35,11 @@ public class MapManager : MonoBehaviour
         return tilemap_Collider;
     }
 
+    public Tilemap GetMainTileMap_Collider2()
+    {
+        return tilemap_Collider2;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +56,7 @@ public class MapManager : MonoBehaviour
                     pathfindingNode.transform.position = CenterPos;
                     pathFindingNodesDictionary[tilelocation] = pathfindingNode;
                     pathfindingNode.SetPosition(tilelocation);
-                    if (GetMainTileMap_Collider().HasTile(tilelocationXYZ))
+                    if (GetMainTileMap_Collider().HasTile(tilelocationXYZ) || GetMainTileMap_Collider2().HasTile(tilelocationXYZ))
                     {
                         pathfindingNode.SetWalkable(false);
                     }
