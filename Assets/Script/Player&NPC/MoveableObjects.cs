@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class MoveableObjects : MonoBehaviour
 {
+    [SerializeField] protected Animator AnimatorController;
     [SerializeField] protected MoveableObjectsSO moveableObjectsSO;
+    [SerializeField] float offsetHeight = 0.0f;
+    private float Speed;
     protected Coroutine MovingMoveableObjects;
     protected MapManager mapManager;
 
@@ -14,7 +17,7 @@ public class MoveableObjects : MonoBehaviour
         return moveableObjectsSO;
     }
 
-    public float GetSpeed()
+    public float GetScriptableObjectSpeed()
     {
         if (GetMoveableObjectsSO() == null)
             return 0;
@@ -26,11 +29,13 @@ public class MoveableObjects : MonoBehaviour
     protected virtual void Start()
     {
         mapManager = MapManager.GetInstance();
+        Speed = 0;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        AnimatorController.SetFloat("Velocity", GetSpeed());
         UpdateState();
     }
 
@@ -74,9 +79,14 @@ public class MoveableObjects : MonoBehaviour
     {
         while (transform.position != EndPos)
         {
-            transform.position = Vector3.MoveTowards(transform.position, EndPos, Time.deltaTime * GetSpeed());
+            Speed = GetScriptableObjectSpeed();
+            transform.position = Vector3.MoveTowards(transform.position, EndPos, Time.deltaTime * Speed);
             yield return null;
         }
+        Speed = 0;
+        Vector3 PosOffset = transform.position;
+        PosOffset.y = transform.position.y + offsetHeight;
+        transform.position = PosOffset;
         MovingMoveableObjects = null;
     }
 
@@ -95,11 +105,12 @@ public class MoveableObjects : MonoBehaviour
         while (path.Count > 0)
         {
             Vector3 targetPosition = path[0].transform.position;
+            targetPosition.y = targetPosition.y + offsetHeight;
             float distance = Vector3.Distance(transform.position, targetPosition);
-
+            Speed = GetScriptableObjectSpeed();
             if (distance > distanceThreshold)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * GetSpeed());
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * Speed);
             }
             else
             {
@@ -107,6 +118,12 @@ public class MoveableObjects : MonoBehaviour
             }
             yield return null;
         }
+        Speed = 0;
         MovingMoveableObjects = null;
+    }
+
+    public float GetSpeed()
+    {
+        return Speed;
     }
 }
