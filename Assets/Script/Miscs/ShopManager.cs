@@ -79,17 +79,11 @@ public class ShopManager : MonoBehaviour
         {
             currentShopItemButtonSelected.Purchased();
             InventoryManager.GetInstance().SubtractCoins(currentShopItemButtonSelected.GetOriginalCost());
-
-            if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.FLOWER)
-            {
-                Station station = AssetManager.GetInstance().GetStation(currentShopItemButtonSelected.GetItemsSO());
-                station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
-                station.gameObject.SetActive(true);
-                OrderSystem.GetInstance().AddStationToList(station);
-                InventoryManager.GetInstance().AddItemsSO(currentShopItemButtonSelected.GetItemsSO());
-
-                //OrderSystem.GetInstance().AddStationToList(station);
-            }
+            Station station = AssetManager.GetInstance().GetStation(currentShopItemButtonSelected.GetItemsSO());
+            station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
+            station.gameObject.SetActive(true);
+            OrderSystem.GetInstance().AddStationToList(station);
+            InventoryManager.GetInstance().AddItemsSO(currentShopItemButtonSelected.GetItemsSO());
         }
         else
         {

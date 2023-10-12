@@ -41,7 +41,8 @@ public class AssetManager : MonoBehaviour
     }
     [SerializeField] GameObject TimerPrefab;
     [SerializeField] BoothInfo[] BoothInfoList;
-    [SerializeField] ItemsSO[] ItemSOList; 
+    [SerializeField] ItemsSO[] FlowerItemSOList;
+    [SerializeField] ItemsSO[] WrapperItemSOList;
 
     public event Action onSelectedClick;
     private Station SelectedStation;
@@ -140,23 +141,23 @@ public class AssetManager : MonoBehaviour
         }
     }
 
-    public ItemsSO GetItemsSO(ItemsSO itemsSO)
+    public ItemsSO GetFlowerItemsSO(ItemsSO itemsSO)
     {
-        for(int i = 0; i < ItemSOList.Length; i++)
+        for(int i = 0; i < FlowerItemSOList.Length; i++)
         {
-            if (itemsSO == ItemSOList[i])
-                return ItemSOList[i];
+            if (itemsSO == FlowerItemSOList[i])
+                return FlowerItemSOList[i];
         }
         return null;
     }
-    //public ItemsSO GetItemsSOByFlowerTypes(WrapTypes wrapTypes)
-    //{
-    //    for (int i = 0; i < GetItemsSOList().Length; i++)
-    //    {
-    //        if (wrapTypes == GetItemsSOList()[i].)
-    //            return GetItemsSOList()[i];
-    //    }
-    //    return null;
-    //}
+    public ItemsSO GetWrapperItemsSO(ItemsSO itemsSO)
+    {
+        for (int i = 0; i < WrapperItemSOList.Length; i++)
+        {
+            if (itemsSO == WrapperItemSOList[i])
+                return WrapperItemSOList[i];
+        }
+        return null;
+    }
 
 }
