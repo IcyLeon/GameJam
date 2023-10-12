@@ -7,11 +7,9 @@ public class Station : InteractableObjects
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Transform WaypointContainer;
     private Transform[] PossibleWaypointTransform; 
-    private int Income;
 
     private void Start()
     {
-        Income = GetStartingIncome();
         PossibleWaypointTransform = WaypointContainer.GetComponentsInChildren<Transform>();
     }
 
@@ -30,10 +28,6 @@ public class Station : InteractableObjects
     public Transform[] GetAllWaypoints()
     {
         return PossibleWaypointTransform;
-    }
-    public int GetIncome()
-    {
-        return Income;
     }
 
     public override void SetitemsSO(ItemsSO itemsSO)

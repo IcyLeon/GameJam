@@ -119,7 +119,7 @@ public class JsonSaveFile : MonoBehaviour
 
     public void LoadPlayerData()
     {
-        if (filePath == null)
+        if (!File.Exists(filePath))
             return;
 
 
