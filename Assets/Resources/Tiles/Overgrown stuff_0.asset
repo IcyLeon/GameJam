@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Ceiling_3
+  m_Name: Overgrown stuff_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1223251799, guid: bb1629def467bc54aac01b16e6e90814, type: 3}
+  m_Sprite: {fileID: -684442746, guid: 39d02329be33c3d4c81a3efb3a802a1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

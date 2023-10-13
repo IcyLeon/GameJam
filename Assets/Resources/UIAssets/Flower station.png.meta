@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b89c0551071379948891b90f4dbe7520
+guid: fd5af1966e767b34c9980e89d8613a75
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceiling_0
+      name: Flower station_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b38d925e185fea9489f0b70e68b7251b
-      internalID: 971383008
+      spriteID: 7b99f09c5f7771b4584852a67387e3f6
+      internalID: -1307064336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ceiling_1
+      name: Flower station_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752c24dc1adf40d49a63a4de8791ddac
+      internalID: 1337608087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flower station_2
       rect:
         serializedVersion: 2
         x: 0
@@ -152,8 +173,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9ac8baa897f3ea4689f38de02ec3760
-      internalID: -1283887968
+      spriteID: b54ad598371d9a64f83186d03162f7ab
+      internalID: -1978430780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flower station_3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8671dd95c8d15a246bc9ca52012ff484
+      internalID: -1541307318
       vertices: []
       indices: 
       edges: []
@@ -169,8 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ceiling_0: 971383008
-      Ceiling_1: -1283887968
+      Flower station_2: -1978430780
+      Flower station_0: -1307064336
+      Flower station_1: 1337608087
+      Flower station_3: -1541307318
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
