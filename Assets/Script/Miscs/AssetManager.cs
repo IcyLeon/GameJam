@@ -24,6 +24,7 @@ public class AssetManager : MonoBehaviour
     [SerializeField] UpgradeItemSO[] UpgradeItemSOList;
     [SerializeField] ItemsSO[] FlowerItemSOList;
     [SerializeField] ItemsSO[] WrapperItemSOList;
+    [SerializeField] SettingsPanel settingsPanel;
 
     public event Action onSelectedClick;
     private Station SelectedStation;
@@ -42,6 +43,7 @@ public class AssetManager : MonoBehaviour
         {
             JsonSaveFile.GetInstance().LoadPlayerData();
         }
+        settingsPanel.UpdateSettings();
     }
 
     public static AssetManager GetInstance()

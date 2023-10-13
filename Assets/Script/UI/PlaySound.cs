@@ -14,6 +14,11 @@ public class PlaySound : MonoBehaviour
         return audioSource;
     }
 
+    public AudioEnum GetAudioEnum()
+    {
+        return AudioEnum;
+    }
+
     public void SetAudioEnum(AudioEnum audioEnum)
     {
         AudioEnum = audioEnum;
@@ -24,7 +29,7 @@ public class PlaySound : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.loop = Looped;
-            soundManager.SubscribeToSoundDictionary(audioSource);
+            soundManager.SubscribeToSoundDictionary(this);
         }
     }
 
@@ -43,11 +48,5 @@ public class PlaySound : MonoBehaviour
     {
         if (audioSource != null)
             audioSource.Stop();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

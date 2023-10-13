@@ -39,7 +39,7 @@ public class SettingsPanel : MonoBehaviour
                 break;
         }
 
-
+        UpdateSettings();
         gameObject.SetActive(false);
     }
 
@@ -61,6 +61,7 @@ public class SettingsPanel : MonoBehaviour
         defaultmusicSettings = musicSettings;
         PlayerPrefs.SetFloat("Sound", defaultsoundSettings);
         PlayerPrefs.SetFloat("Music", defaultmusicSettings);
+        UpdateSettings();
     }
 
     void CheckIfDifferent(float value)
@@ -89,6 +90,7 @@ public class SettingsPanel : MonoBehaviour
         musicSlider.value = defaultmusicSettings;
         soundSettings = defaultsoundSettings;
         musicSettings = defaultmusicSettings;
+        UpdateSettings();
     }
 
     void ResetProgress()
@@ -105,6 +107,34 @@ public class SettingsPanel : MonoBehaviour
         {
             JsonSaveFile.GetInstance().SavePlayerData();
             SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    public void UpdateSettings()
+    {
+        if (SoundManager.GetInstance() != null)
+        {
+            List<PlaySound> audioList = SoundManager.GetInstance().GetAudioSource();
+            for (int i = 0; i < audioList.Count; i++)
+            {
+                if (audioList[i] != null)
+                {
+                    if (audioList[i].GetAudioSource())
+                    {
+                        switch (SoundManager.GetInstance().GetSoundType(audioList[i].GetAudioEnum()))
+                        {
+                            case SoundType.SFX:
+                                audioList[i].GetAudioSource().volume = defaultsoundSettings;
+                                break;
+                            case SoundType.BGM:
+                                audioList[i].GetAudioSource().volume = defaultmusicSettings;
+                                break;
+                        }
+                        Debug.Log(SoundManager.GetInstance().GetSoundType(audioList[i].GetAudioEnum()));
+                    }
+                }
+
+            }
         }
     }
 }

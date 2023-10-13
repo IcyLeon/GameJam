@@ -18,7 +18,8 @@ public enum AudioEnum
     BGM_MUSIC_GAME,
     PRESS_BUTTON,
     PURCHASE_SUCCESS,
-    PURCHASE_FAIL
+    PURCHASE_FAIL,
+    MM_BGM
 }
 
 public class SoundManager : MonoBehaviour
@@ -33,11 +34,11 @@ public class SoundManager : MonoBehaviour
     private static SoundManager instance;
     [SerializeField] AudioReference[] SoundListInfo;
 
-    private List<AudioSource> soundList = new(); // int is a dummy for now
+    private List<PlaySound> soundList = new(); // int is a dummy for now
 
-    public void SubscribeToSoundDictionary(AudioSource audioSource)
+    public void SubscribeToSoundDictionary(PlaySound playSound)
     {
-        soundList.Add(audioSource);
+        soundList.Add(playSound);
     }
     public AudioClip GetSFXCLip(AudioEnum audioEnum)
     {
@@ -49,6 +50,16 @@ public class SoundManager : MonoBehaviour
         return null;
     }
 
+    public SoundType GetSoundType(AudioEnum audioEnum)
+    {
+        for (int i = 0; i < SoundListInfo.Length; i++)
+        {
+            if (SoundListInfo[i].audioEnum == audioEnum)
+                return SoundListInfo[i].soundType;
+        }
+        return default(SoundType);
+    }
+
     private void Awake()
     {
         instance = this;
@@ -57,5 +68,10 @@ public class SoundManager : MonoBehaviour
     public static SoundManager GetInstance()
     {
         return instance;
+    }
+
+    public List<PlaySound> GetAudioSource()
+    {
+        return soundList;
     }
 }

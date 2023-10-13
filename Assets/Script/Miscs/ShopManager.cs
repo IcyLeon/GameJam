@@ -123,7 +123,8 @@ public class ShopManager : MonoBehaviour
             playSound.SetAudioEnum(AudioEnum.PURCHASE_FAIL);
             SetPopUpActive(true);
         }
-        playSound.PlayAudio(playSound.GetAudioSource());
+        if (playSound.GetAudioSource())
+            playSound.PlayAudio(playSound.GetAudioSource());
         PurchaseBtn.SetActive(currentShopItemButtonSelected != null && !currentShopItemButtonSelected.isPurchased());
     }
 

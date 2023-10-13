@@ -774,6 +774,7 @@ MonoBehaviour:
   playButton: {fileID: 177056388}
   settingsButton: {fileID: 796439772}
   quitButton: {fileID: 1006860316}
+  settingsPage: {fileID: 1642307250}
 --- !u!1 &1419704956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1005,38 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3641836249545144134, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103919235650526754, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103919235650526754, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103919235650526754, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103919235650526754, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416583657110279316, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416583657110279316, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416583657110279316, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416583657110279316, guid: 7abcbe8b7e7d4f743b3a56ba89c65728, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1350,6 +1383,9 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 88036a2a3ec67cd489d5b9a80b57e33c, type: 3}
     audioEnum: 7
     soundType: 0
+  - clip: {fileID: 8300000, guid: 9a3000f9a60eba442b1484e8397517ff, type: 3}
+    audioEnum: 8
+    soundType: 1
 --- !u!1001 &992054779339644662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1460,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 14542891423248001, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
       propertyPath: AudioEnum
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2548344401335421679, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
       propertyPath: m_Name
