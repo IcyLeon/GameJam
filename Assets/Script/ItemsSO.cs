@@ -19,6 +19,8 @@ public class ItemsSO : ScriptableObject
     [TextAreaAttribute]
     public string ItemDescription;
 
+    public Sprite wrapperEnvironmentSprite;
+
     public string GetRarityTxt()
     {
         switch(Rarity)

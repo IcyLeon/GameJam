@@ -18,3 +18,4 @@ MonoBehaviour:
   StartingIncome: 0
   multipler: 1.5
   ItemDescription: This wrapper looks decent! (x1.5 of flower sell price)
+  wrapperEnvironmentSprite: {fileID: 21300000, guid: 29fe757e06cc30c4881b5de4daa66d10, type: 3}
