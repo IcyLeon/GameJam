@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
   m_Name: Moonflower
   m_EditorClassIdentifier: 
-  ItemName: Moonflower (Rare)
+  ItemName: Moonflower
   Rarity: 2
   ItemSprite: {fileID: 21300000, guid: e3bd3286efde0ff438bd592020018474, type: 3}
   StartingIncome: 400000

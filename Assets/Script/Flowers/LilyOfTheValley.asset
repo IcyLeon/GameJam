@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
   m_Name: LilyOfTheValley
   m_EditorClassIdentifier: 
-  ItemName: Lily Of The Valley (Uncommon)
+  ItemName: Lily Of The Valley
   Rarity: 1
   ItemSprite: {fileID: 21300000, guid: dd97bd9cc636d3646be149035b440c03, type: 3}
   StartingIncome: 2000

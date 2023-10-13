@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
   m_Name: Tulip
   m_EditorClassIdentifier: 
-  ItemName: Tulip (Common)
+  ItemName: Tulip
   Rarity: 0
   ItemSprite: {fileID: 21300000, guid: f4cfbd7442df8f041b47184d58d86dde, type: 3}
   StartingIncome: 5
