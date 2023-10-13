@@ -13,17 +13,16 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        inventory = new Inventory(0);
+        onCurrencyValueChanged?.Invoke(0);
     }
 
     private void Start()
     {
-        int StartingValue = 1000;
-        inventory = new Inventory(StartingValue);
         if (JsonSaveFile.GetInstance() != null)
         {
             inventory.LoadData();
         }
-        onCurrencyValueChanged?.Invoke(StartingValue);
     }
 
     public List<ItemsSO> GetAllWrapperList(List<ItemsSO> ItemSOList)

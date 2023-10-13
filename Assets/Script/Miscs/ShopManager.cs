@@ -142,24 +142,29 @@ public class ShopManager : MonoBehaviour
     /// </summary>
     void AutoBuyLoadedFlowers()
     {
-        ShopItemButton[] shopItemList = GetComponentsInChildren<ShopItemButton>();
+        
+        ShopItemButton[] flowerItemList = FlowerShopContentParent.GetComponentsInChildren<ShopItemButton>();
+        ShopItemButton[] wrapperItemList = WrapperShopContentParent.GetComponentsInChildren<ShopItemButton>();
         ItemsSO rose = AssetManager.GetInstance().GetFlowerItemSOList()[0];
         ItemsSO wrapper = AssetManager.GetInstance().GetWrapperItemSOList()[0];
 
-        for (int i = 0; i < shopItemList.Length; i++)
+        for (int i = 0; i < flowerItemList.Length; i++)
         {
-            if (shopItemList[i].GetItemsSO() == rose)
+            if (flowerItemList[i].GetItemsSO() == rose)
             {
                 GetComponent<TabGroup>().ForceToFlower();
-                currentShopItemButtonSelected = shopItemList[i];
+                currentShopItemButtonSelected = flowerItemList[i];
                 PurchaseInfo(true);
                 currentShopItemButtonSelected.Purchased();
             }
+        }
 
-            else if (shopItemList[i].GetItemsSO() == wrapper)
+        for (int i = 0; i < wrapperItemList.Length; i++)
+        {
+            if (wrapperItemList[i].GetItemsSO() == wrapper)
             {
                 GetComponent<TabGroup>().ForceToWrapper();
-                currentShopItemButtonSelected = shopItemList[i];
+                currentShopItemButtonSelected = wrapperItemList[i];
                 PurchaseInfo(true);
                 currentShopItemButtonSelected.Purchased();
             }
@@ -173,11 +178,11 @@ public class ShopManager : MonoBehaviour
             GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.FLOWER;
             for (int i = 0; i < flowerSOList.Count; i++)
             {
-                for (int x = 0; x < shopItemList.Length; x++)
+                for (int x = 0; x < flowerItemList.Length; x++)
                 {
-                    if (flowerSOList[i] == shopItemList[x].GetItemsSO() && flowerSOList[i] != rose)
+                    if (flowerSOList[i] == flowerItemList[x].GetItemsSO() && flowerSOList[i] != rose)
                     {
-                        currentShopItemButtonSelected = shopItemList[x];
+                        currentShopItemButtonSelected = flowerItemList[x];
                         PurchaseInfo(true);
                         currentShopItemButtonSelected.Purchased();
                         break;
@@ -188,11 +193,11 @@ public class ShopManager : MonoBehaviour
             GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.WRAPPER;
             for (int i = 0; i < wrapperSOList.Count; i++)
             {
-                for (int x = 0; x < shopItemList.Length; x++)
+                for (int x = 0; x < wrapperItemList.Length; x++)
                 {
-                    if (wrapperSOList[i] == shopItemList[x].GetItemsSO() && wrapperSOList[i] != wrapper)
+                    if (wrapperSOList[i] == wrapperItemList[x].GetItemsSO() && wrapperSOList[i] != wrapper)
                     {
-                        currentShopItemButtonSelected = shopItemList[x];
+                        currentShopItemButtonSelected = wrapperItemList[x];
                         PurchaseInfo(true);
                         currentShopItemButtonSelected.Purchased();
                         break;
