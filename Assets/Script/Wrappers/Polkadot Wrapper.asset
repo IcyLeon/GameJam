@@ -18,3 +18,4 @@ MonoBehaviour:
   StartingIncome: 0
   multipler: 2
   ItemDescription: SO Much Dots! (x2.2 of all flower sell price)
+  wrapperEnvironmentSprite: {fileID: 21300000, guid: a9dff766a243e7942ad4875eebc68fbe, type: 3}

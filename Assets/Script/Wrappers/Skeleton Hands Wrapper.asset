@@ -19,3 +19,4 @@ MonoBehaviour:
   multipler: 20
   ItemDescription: "This is passed down by my great great\u2026 wait I don't exactly
     know (x20 of all flower sell price"
+  wrapperEnvironmentSprite: {fileID: 21300000, guid: 871c182f49f7ea3449b1a21b07697788, type: 3}

@@ -36,4 +36,11 @@ public class Station : InteractableObjects
         spriteRenderer.sprite = AssetManager.GetInstance().GetBoothSprite(GetItemsSO());
     }
 
+    /// <summary>
+    /// Only use for wrapper
+    /// </summary>
+    public void SetDisplay(ItemsSO itemsSO)
+    {
+        spriteRenderer.sprite = itemsSO.wrapperEnvironmentSprite;
+    }
 }

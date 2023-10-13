@@ -103,14 +103,15 @@ public class ShopManager : MonoBehaviour
 
             else if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.WRAPPER)
             {
+                Station station = AssetManager.GetInstance().GetStation(AssetManager.GetInstance().GetWrapperItemSOList()[0]);
                 if (!runOnce)
                 {
-                    Station station = AssetManager.GetInstance().GetStation(currentShopItemButtonSelected.GetItemsSO());
                     station.SetitemsSO(currentShopItemButtonSelected.GetItemsSO());
                     OrderSystem.GetInstance().AddStationToList(station);
                     runOnce = true;
                 }
                 InventoryManager.GetInstance().AddWrappersSO(currentShopItemButtonSelected.GetItemsSO());
+                station.SetDisplay(InventoryManager.GetInstance().GetMostMultiplerWrapper()); 
             }
         }
         else
