@@ -24,6 +24,7 @@ public class NPC : MoveableObjects
     protected override void Start()
     {
         base.Start();
+        InventoryManager.GetInstance().onCurrencyValueChanged += SpawnText;
         togglePanel(false);
         state = NPCState.MOVE_TO_QUEUE;
         RandomGenerateItem();
@@ -99,6 +100,17 @@ public class NPC : MoveableObjects
         for (int i = 0; i < ItemSlotList.Count; i++)
         {
             ItemSlotList[i].UpdateContent(ItemsList[i].GetItemsSO().ItemSprite, "X" + ItemsList[i].GetAmount().ToString());
+        }
+    }
+
+    public void SpawnText(int value)
+    {
+        if (QueueSystem.GetInstance().GetNPCTobeServed() == this)
+        {
+            GameObject go = Instantiate(AssetManager.GetInstance().CanvasWorldText, transform.position, Quaternion.identity);
+            WorldText worldText = go.GetComponent<WorldText>();
+            worldText.Init(value.ToString(), 1f, 0.65f, Color.yellow, Vector3.zero);
+            worldText.MovingText(Vector3.up * 3f);
         }
     }
 

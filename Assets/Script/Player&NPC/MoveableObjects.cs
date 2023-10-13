@@ -106,8 +106,9 @@ public class MoveableObjects : MonoBehaviour
         {
             Vector3 targetPosition = path[0].transform.position;
             targetPosition.y = targetPosition.y + offsetHeight;
-            float distance = Vector3.Distance(transform.position, targetPosition);
             Speed = GetScriptableObjectSpeed();
+            float distance = Vector3.Distance(transform.position, targetPosition);
+
             if (distance > distanceThreshold)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * Speed);
