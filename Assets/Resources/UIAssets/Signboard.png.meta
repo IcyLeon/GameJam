@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b89c0551071379948891b90f4dbe7520
+guid: ad6f7662fdacc9b498a1ee4ec9eae12f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,28 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceiling_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b38d925e185fea9489f0b70e68b7251b
-      internalID: 971383008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ceiling_1
+      name: Signboard_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9ac8baa897f3ea4689f38de02ec3760
-      internalID: -1283887968
+      spriteID: 7dcc6cb09fe773c419eed7a9f057b765
+      internalID: 994195760
       vertices: []
       indices: 
       edges: []
@@ -169,8 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ceiling_0: 971383008
-      Ceiling_1: -1283887968
+      Signboard_0: 994195760
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b89c0551071379948891b90f4dbe7520
+guid: d880513640c829f489460ac8ebd71ef7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,28 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceiling_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b38d925e185fea9489f0b70e68b7251b
-      internalID: 971383008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ceiling_1
+      name: wall_top_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,8 +131,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9ac8baa897f3ea4689f38de02ec3760
-      internalID: -1283887968
+      spriteID: dfb91816969280d4aa596c44dbcbfe0a
+      internalID: -911499345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_top_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7916c61acc4a4478e45ae16b129b38
+      internalID: 1793579280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_top_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab2aac345eee084d9c79f5c418d4f8e
+      internalID: -507130706
       vertices: []
       indices: 
       edges: []
@@ -169,8 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ceiling_0: 971383008
-      Ceiling_1: -1283887968
+      wall_top_2: -507130706
+      wall_top_1: 1793579280
+      wall_top_0: -911499345
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
