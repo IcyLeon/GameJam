@@ -124,6 +124,7 @@ public class Player : MoveableObjects
                     QueueSystem queueSystem = QueueSystem.GetInstance();
 
                     queueSystem.LeaveNPCFromQueue(queueSystem.GetNPCTobeServed());
+
                     playerState = PlayerState.IDLE;
                 }
                 break;

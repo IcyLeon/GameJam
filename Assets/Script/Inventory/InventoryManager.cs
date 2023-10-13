@@ -7,7 +7,8 @@ public class InventoryManager : MonoBehaviour
 {
     private static InventoryManager instance;
     private Inventory inventory;
-    public event Action onCurrencyValueChanged;
+    public delegate void OnCurrencyValueChanged(int value);
+    public OnCurrencyValueChanged onCurrencyValueChanged;
 
     private void Awake()
     {
@@ -16,12 +17,13 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        inventory = new Inventory(1000);
+        int StartingValue = 1000;
+        inventory = new Inventory(StartingValue);
         if (JsonSaveFile.GetInstance() != null)
         {
             inventory.LoadData();
         }
-        onCurrencyValueChanged?.Invoke();
+        onCurrencyValueChanged?.Invoke(StartingValue);
     }
 
     public List<ItemsSO> GetAllWrapperList(List<ItemsSO> ItemSOList)
@@ -46,7 +48,7 @@ public class InventoryManager : MonoBehaviour
         if (inventory == null)
             return;
         inventory.SetCoins(inventory.GetCoins() + amt);
-        onCurrencyValueChanged?.Invoke();
+        onCurrencyValueChanged?.Invoke(amt);
     }
 
     public void SubtractCoins(int amt)
@@ -55,7 +57,7 @@ public class InventoryManager : MonoBehaviour
             return;
 
         inventory.SetCoins(inventory.GetCoins() - amt);
-        onCurrencyValueChanged?.Invoke();
+        onCurrencyValueChanged?.Invoke(-amt);
     }
 
     public int GetCoins()

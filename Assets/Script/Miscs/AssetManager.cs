@@ -30,6 +30,7 @@ public class AssetManager : MonoBehaviour
 
     private static AssetManager instance;
     public GameObject StationPrefab;
+    public GameObject CanvasWorldText;
     [SerializeField] Color32 CommonColor, UncommonColor, RareColor;
 
     private void Awake()

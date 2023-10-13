@@ -168,6 +168,7 @@ public class QueueSystem : MonoBehaviour
         if (queue != null)
             queue.LeaveNPC(npc);
     }
+
     public QueueRowManager GetQueueAt(NPC npc)
     {
         for (int i = 0; i < RowsQueue.Length; i++)

@@ -10,10 +10,10 @@ public class CurrencyDisplay : MonoBehaviour
     public void Start()
     {
         InventoryManager.GetInstance().onCurrencyValueChanged += onCurrencyChanged;
-        onCurrencyChanged();
+        onCurrencyChanged(0); // 0 is a dummy value
     }
 
-    private void onCurrencyChanged()
+    private void onCurrencyChanged(int value)
     {
         if (CoinsTxt)
             CoinsTxt.text = AssetManager.GetInstance().AdjustCurrencyDisplay(InventoryManager.GetInstance().GetCoins());

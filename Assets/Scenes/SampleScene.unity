@@ -9165,6 +9165,7 @@ MonoBehaviour:
   WrapperItemSOList:
   - {fileID: 11400000, guid: 0ab3ad5773a8ca6438138f8ab1e4c16d, type: 2}
   StationPrefab: {fileID: 1407387797405926488, guid: 008502f29e3321c41a816994252968a5, type: 3}
+  CanvasWorldText: {fileID: 1068187456115840353, guid: 6c349d8bcbce19e4f8fbc31f893e548a, type: 3}
   CommonColor:
     serializedVersion: 2
     rgba: 4294945280
