@@ -41,17 +41,6 @@ public class Player : MoveableObjects
 
     protected override void Update()
     {
-        Vector2Int CurrentPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(transform.position).x, mapManager.GetMainTileMap().WorldToCell(transform.position).y);
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pos.z = 0;
-
-            Vector2Int EndPos = new Vector2Int(mapManager.GetMainTileMap().WorldToCell(pos).x, mapManager.GetMainTileMap().WorldToCell(pos).y);
-            MoveMoveableObjects_PathFind(CurrentPos, EndPos);
-        }
-
         base.Update();
     }
 
@@ -165,7 +154,7 @@ public class Player : MoveableObjects
         float dt = 0;
         TimerDisplay timerSlider = Instantiate(AssetManager.GetInstance().GetTimerPrefab(), transform).GetComponent<TimerDisplay>();
         timerSlider.SetMinandMaxValue(0, maxTimer);
-        timerSlider.transform.position = transform.position;
+        timerSlider.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
 
         while (i < count)
         {

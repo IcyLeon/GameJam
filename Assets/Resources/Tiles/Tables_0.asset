@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Flower station_0
+  m_Name: Tables_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1307064336, guid: fd5af1966e767b34c9980e89d8613a75, type: 3}
+  m_Sprite: {fileID: -1074422830, guid: 387948d31567f1349bfa4421c64e805d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -14,7 +14,6 @@ public class InventoryManager : MonoBehaviour
     {
         instance = this;
         inventory = new Inventory(0);
-        onCurrencyValueChanged?.Invoke(0);
     }
 
     private void Start()
@@ -23,6 +22,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventory.LoadData();
         }
+        onCurrencyValueChanged?.Invoke(0);
     }
 
     public List<ItemsSO> GetAllWrapperList(List<ItemsSO> ItemSOList)
