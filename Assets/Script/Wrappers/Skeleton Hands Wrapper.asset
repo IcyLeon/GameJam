@@ -16,7 +16,7 @@ MonoBehaviour:
   Rarity: 2
   ItemSprite: {fileID: 21300000, guid: cabb39c23d4cb444796995925b76d7ff, type: 3}
   StartingIncome: 0
-  multipler: 20
+  multipler: 15
   ItemDescription: "This is passed down by my great great\u2026 wait I don't exactly
-    know (x20 of all flower sell price"
+    know (x15 of all flower sell price"
   wrapperEnvironmentSprite: {fileID: 21300000, guid: 871c182f49f7ea3449b1a21b07697788, type: 3}

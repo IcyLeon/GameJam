@@ -17,6 +17,10 @@ public class Inventory
     public void SetCoins(int amt)
     {
         Coins = amt;
+        if (Coins > 2000000000)
+        {
+            Coins = 2000000000;
+        }
     }
 
     public Inventory(int Coins = 0)

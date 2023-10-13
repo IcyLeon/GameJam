@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button playButton;
     [SerializeField] Button settingsButton;
     [SerializeField] Button quitButton;
+    [SerializeField] GameObject settingsPage;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     void OpenSettings()
     {
-
+        settingsPage.SetActive(true);
     }
 
     void PlayGame()

@@ -16,6 +16,6 @@ MonoBehaviour:
   Rarity: 1
   ItemSprite: {fileID: 21300000, guid: e89d804a16ca65f419357a6353d900be, type: 3}
   StartingIncome: 0
-  multipler: 4
-  ItemDescription: How much lines do you want? (x4 of all flower sell price)
+  multipler: 3.5
+  ItemDescription: How much lines do you want? (x3.5 of all flower sell price)
   wrapperEnvironmentSprite: {fileID: 21300000, guid: 6eee3cfe7c28ed54593f64124eab5490, type: 3}

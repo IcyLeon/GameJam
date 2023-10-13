@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3cbe9a4a83ec564c9e258c1f42140ed, type: 3}
+  m_Name: AdvancedOrchidUpgrade
+  m_EditorClassIdentifier: 
+  itemName: Advanced Orchid Upgrade
+  itemDescription: "x10 selling price of orchid\t"
+  itemSprite: {fileID: 21300000, guid: f4202333398dffe4ba9ed8533e3f27e0, type: 3}
+  Cost: 113200000
+  multiplerIfAny: 10
+  affectWhatItems:
+  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}

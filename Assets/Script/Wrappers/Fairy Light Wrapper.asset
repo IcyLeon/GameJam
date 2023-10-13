@@ -16,6 +16,6 @@ MonoBehaviour:
   Rarity: 2
   ItemSprite: {fileID: 21300000, guid: 3f5f797e94f855540ac0df33c059a94a, type: 3}
   StartingIncome: 0
-  multipler: 12
-  ItemDescription: Make a wish my friend (x12 of all flower sell price)
+  multipler: 8
+  ItemDescription: Make a wish my friend (x8 of all flower sell price)
   wrapperEnvironmentSprite: {fileID: 21300000, guid: 29fe757e06cc30c4881b5de4daa66d10, type: 3}

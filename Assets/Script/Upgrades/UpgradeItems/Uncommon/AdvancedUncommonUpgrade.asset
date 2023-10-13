@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3cbe9a4a83ec564c9e258c1f42140ed, type: 3}
+  m_Name: AdvancedUncommonUpgrade
+  m_EditorClassIdentifier: 
+  itemName: Advanced Uncommon Upgrade
+  itemDescription: x10 selling price of all uncommon flowers
+  itemSprite: {fileID: 21300000, guid: 94e4495a24d2a8a459003a289b74dd79, type: 3}
+  Cost: 212100000
+  multiplerIfAny: 10
+  affectWhatItems:
+  - {fileID: 11400000, guid: dd1af7495748d3d4089ef760d00dbb91, type: 2}
+  - {fileID: 11400000, guid: b6ce660ffef009d4fbd5661d2373f686, type: 2}
+  - {fileID: 11400000, guid: 5547bc825daf83d41bb231e884ea5c80, type: 2}

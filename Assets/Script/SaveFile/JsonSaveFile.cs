@@ -160,6 +160,16 @@ public class JsonSaveFile : MonoBehaviour
         public List<int> unlockedUpgradeItemSOindexList = new List<int>();
     }
 
+    /// <summary>
+    /// Nuke the player saveData. Use this with caution! Use this only in Main Menu
+    /// </summary>
+    public void ResetProgress()
+    {
+        SaveData newSaveData = new SaveData();
+        newSaveData.currencyAmt = 0;
+        string json = JsonUtility.ToJson(newSaveData);
+        File.WriteAllText(filePath, json);
+    }
 
     private class LoadedData
     {

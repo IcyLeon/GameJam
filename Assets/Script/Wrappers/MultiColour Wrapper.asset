@@ -16,6 +16,6 @@ MonoBehaviour:
   Rarity: 1
   ItemSprite: {fileID: 21300000, guid: 56a0368bf7e4e834ba7b65f87eefca72, type: 3}
   StartingIncome: 0
-  multipler: 8.5
-  ItemDescription: So many colorsssss :O(x8.5 of all flower sell price)
+  multipler: 5
+  ItemDescription: So many colorsssss :O(x5 of all flower sell price)
   wrapperEnvironmentSprite: {fileID: 21300000, guid: cdd2ab1d177dba54dbd7a560047ee36a, type: 3}
