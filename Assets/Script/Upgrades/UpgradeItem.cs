@@ -24,7 +24,7 @@ public class UpgradeItem : MonoBehaviour
     private void Start()
     {
         InventoryManager.GetInstance().onCurrencyValueChanged += AdjustDisplay;
-        AdjustDisplay();
+        AdjustDisplay(0); // 0 is a dummy parameter for now
         purchaseButton.onClick.AddListener(delegate
         {
             Bought();
@@ -76,7 +76,7 @@ public class UpgradeItem : MonoBehaviour
         costAmtDisplay.text = AssetManager.GetInstance().AdjustCurrencyDisplay(itemCost);
     }
 
-    private void AdjustDisplay()
+    private void AdjustDisplay(int value)
     {
         if (InventoryManager.GetInstance().GetCoins() < itemCost && !bought)
             MakeNotBuyable();
