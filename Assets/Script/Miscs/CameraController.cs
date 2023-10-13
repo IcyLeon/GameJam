@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
     {
         Vector2 MouseMovement = Input.GetTouch(0).deltaPosition;
         MouseMovement = new Vector2(MouseMovement.x / Screen.width,
-                                   MouseMovement.y / Screen.height) * 10f;
+                                   MouseMovement.y / Screen.height) * 2f;
         Target = CameraPosition - (((transform.up * MouseMovement.y) + (transform.right * MouseMovement.x)) * MoveSpeed);
         Target.z = -10f;
     }
