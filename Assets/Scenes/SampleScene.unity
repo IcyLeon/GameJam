@@ -2459,6 +2459,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Station
       objectReference: {fileID: 0}
+    - target: {fileID: 1407387797405926489, guid: 008502f29e3321c41a816994252968a5, type: 3}
+      propertyPath: m_Size.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407387797405926489, guid: 008502f29e3321c41a816994252968a5, type: 3}
+      propertyPath: m_Size.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407387797405926489, guid: 008502f29e3321c41a816994252968a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: be69eb7b497f44c4d903ed0ff419d7d3, type: 3}
     - target: {fileID: 1407387797405926494, guid: 008502f29e3321c41a816994252968a5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2469,7 +2481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1407387797405926494, guid: 008502f29e3321c41a816994252968a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.208
       objectReference: {fileID: 0}
     - target: {fileID: 1407387797405926494, guid: 008502f29e3321c41a816994252968a5, type: 3}
       propertyPath: m_LocalPosition.z

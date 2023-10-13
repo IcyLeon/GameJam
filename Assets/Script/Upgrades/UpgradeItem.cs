@@ -78,7 +78,10 @@ public class UpgradeItem : MonoBehaviour
 
     private void AdjustDisplay(int value)
     {
-        if (InventoryManager.GetInstance().GetCoins() < itemCost && !bought)
+        if (bought)
+            return;
+
+        if (InventoryManager.GetInstance().GetCoins() < itemCost)
             MakeNotBuyable();
         else
             MakeBuyable();
