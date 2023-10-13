@@ -15,7 +15,7 @@ public class OrderSystem : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         for (int i = 0; i < AssetManager.GetInstance().GetBoothInfo().Length; i++)
         {
