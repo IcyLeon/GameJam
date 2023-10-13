@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
   m_Name: LilyOfTheValley
   m_EditorClassIdentifier: 
-  ItemName: Lily Of The Valley
+  ItemName: Lily Of The Valley (Uncommon)
   Rarity: 1
   ItemSprite: {fileID: 21300000, guid: dd97bd9cc636d3646be149035b440c03, type: 3}
   StartingIncome: 2000
   multipler: 0
-  flowerType: 5
-  ItemDescription: Why the name so long?
+  ItemDescription: 'Why the name so long? (Sell Price: 2k)'
+  wrapperEnvironmentSprite: {fileID: 0}

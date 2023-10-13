@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3cbe9a4a83ec564c9e258c1f42140ed, type: 3}
-  m_Name: CommonUpgrade
+  m_Name: Rare Upgrade
   m_EditorClassIdentifier: 
   itemName: Common Price Upgrade
-  itemDescription: x5 selling price of all common flowers
+  itemDescription: x5 selling price of all rare flowers
   itemSprite: {fileID: 21300000, guid: 3e0db3655d74eb74cb79bc530965ee29, type: 3}
-  Cost: 65000
+  Cost: 230000000
   multiplerIfAny: 5
   affectWhatItems:
-  - {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
-  - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
-  - {fileID: 11400000, guid: 12f79167e7cbeed49abf371387f25dcd, type: 2}
+  - {fileID: 11400000, guid: bc70b252ab4778a4691559d7af75a3fe, type: 2}
+  - {fileID: 11400000, guid: e26b3c8c6274bd144b239bcc3c88b554, type: 2}
+  - {fileID: 11400000, guid: 2708141a9f1661e459e8a7da5e160305, type: 2}

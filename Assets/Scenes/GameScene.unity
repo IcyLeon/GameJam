@@ -2675,18 +2675,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1698569734}
     m_Modifications:
-    - target: {fileID: 6097561080598312635, guid: d5eb9b0184609fe41b876c7b73fc4b96, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097561080598312635, guid: d5eb9b0184609fe41b876c7b73fc4b96, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097561080598312635, guid: d5eb9b0184609fe41b876c7b73fc4b96, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6097561080809824296, guid: d5eb9b0184609fe41b876c7b73fc4b96, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7447,12 +7435,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be4181d00b2bc9d469d3e1af4202639e, type: 2}
   - {fileID: 11400000, guid: ffab8d4eba8c772409d5f776ceeb44b4, type: 2}
   - {fileID: 11400000, guid: 585e3fdd289897940abf8c113442df49, type: 2}
+  - {fileID: 11400000, guid: 46565b587da498c47b6e1e05de699440, type: 2}
   - {fileID: 11400000, guid: 26f1497f8cdc1b146b11d312df2ab032, type: 2}
   - {fileID: 11400000, guid: 7d35f638dee291746a73af6fdd0e5d97, type: 2}
   - {fileID: 11400000, guid: 18f0c1c7523261741a315474ee6a37fc, type: 2}
+  - {fileID: 11400000, guid: cce88b4d930c3f34397d582a16ed328a, type: 2}
   - {fileID: 11400000, guid: a18898e5084579741a9ef80b996ecdb0, type: 2}
   - {fileID: 11400000, guid: 397203f5042f44c4b93658d0c8211050, type: 2}
   - {fileID: 11400000, guid: ca862be953c887f4780f60dea8e9aae8, type: 2}
+  - {fileID: 11400000, guid: 741f5d7b91415d644add4034c7bd17d7, type: 2}
   FlowerItemSOList:
   - {fileID: 11400000, guid: 8f975ad6ce0bfe94d9f34a9465efa8a2, type: 2}
   - {fileID: 11400000, guid: 0a689dae64925bd41b500c78f85e6383, type: 2}
@@ -11182,17 +11173,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 1698569734}
     m_Modifications:
     - target: {fileID: 3751641597062049981, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3751641597062049981, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 405212682}
-    - target: {fileID: 3751641597062049981, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
     - target: {fileID: 3751641597666648262, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
       propertyPath: m_Name
       value: UI Display Icons
@@ -11289,14 +11272,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1910156645}
-    - target: {fileID: 3751641597729651999, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 3751641597729651999, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetPopUpActive
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf5b8b42ff020b54fadd1d32072b0861, type: 3}
 --- !u!224 &1862683158 stripped

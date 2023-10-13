@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
   m_Name: Daisy
   m_EditorClassIdentifier: 
-  ItemName: Daisy
+  ItemName: Daisy (Common)
   Rarity: 0
   ItemSprite: {fileID: 21300000, guid: 4c4b7468561a8c64eba313c47f093754, type: 3}
   StartingIncome: 80
   multipler: 0
-  flowerType: 3
-  ItemDescription: Daisy test
+  ItemDescription: 'I need Morr flowers (Sell Price: 80)'
+  wrapperEnvironmentSprite: {fileID: 0}

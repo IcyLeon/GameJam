@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
   m_Name: Sunflower
   m_EditorClassIdentifier: 
-  ItemName: Sunflower
+  ItemName: Sunflower (Uncommon)
   Rarity: 1
   ItemSprite: {fileID: 21300000, guid: 84137fe995561924dbffb7a4a2d8b97d, type: 3}
   StartingIncome: 600
   multipler: 0
-  flowerType: 4
-  ItemDescription: Sunflower :D
+  ItemDescription: 'Sunflower :D (Sell Price: 600)'
+  wrapperEnvironmentSprite: {fileID: 0}
