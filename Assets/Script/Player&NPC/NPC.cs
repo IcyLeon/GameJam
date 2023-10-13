@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NPC : MoveableObjects
 {
+    [SerializeField] PlaySound playSound;
     [SerializeField] Canvas canvasUI;
     [SerializeField] Transform ItemContainer;
     [SerializeField] GameObject ItemSlotPrefab;
@@ -114,6 +115,10 @@ public class NPC : MoveableObjects
 
             ParticleSystem particleSystem = Instantiate(AssetManager.GetInstance().ParticlesEffectBurst, transform).GetComponent<ParticleSystem>();
             Destroy(particleSystem, particleSystem.main.duration);
+
+            if (playSound)
+                if (playSound.GetAudioSource())
+                    playSound.PlayAudio(playSound.GetAudioSource());
         }
     }
 
