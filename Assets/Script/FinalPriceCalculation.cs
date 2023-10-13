@@ -47,7 +47,7 @@ public class FinalPriceCalculation : MonoBehaviour
         return (int)totalPrice;
     }
 
-    int CalculateModifierApplied(ItemsSO flower)
+    public int CalculateModifierApplied(ItemsSO flower)
     {
         float basePrice = flower.StartingIncome;
 

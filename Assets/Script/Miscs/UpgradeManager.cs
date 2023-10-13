@@ -15,7 +15,6 @@ public class UpgradeManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        gameObject.SetActive(false);
     }
 
     private UpgradeItemSO[] upgradeItemList;
@@ -49,6 +48,7 @@ public class UpgradeManager : MonoBehaviour
                 }
             }
         }
+        gameObject.SetActive(false);
     }
 
 

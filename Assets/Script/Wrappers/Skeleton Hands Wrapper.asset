@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e3993adb9c909f4a9a2845659a5b092, type: 3}
-  m_Name: Wrapper
+  m_Name: Skeleton Hands Wrapper
   m_EditorClassIdentifier: 
-  ItemName: Wrapper
-  Rarity: 0
-  ItemSprite: {fileID: 21300000, guid: 570b8e14fde16b04488c2821e4dfc91c, type: 3}
+  ItemName: Skeleton Hands Wrap
+  Rarity: 2
+  ItemSprite: {fileID: 21300000, guid: cabb39c23d4cb444796995925b76d7ff, type: 3}
   StartingIncome: 0
-  multipler: 1
-  flowerType: 0
-  ItemDescription: A basic wrapper. Nothing much special
+  multipler: 20
+  ItemDescription: "This is passed down by my great great\u2026 wait I don't exactly
+    know (x20 of all flower sell price"

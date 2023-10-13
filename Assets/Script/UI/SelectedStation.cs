@@ -27,18 +27,34 @@ public class SelectedStation : MonoBehaviour
         Content.SetActive(true);
 
         if (NameTxt)
-            NameTxt.text = assetManager.GetSelectedStation().GetItemsSO().ItemName;
+        {
+            if (assetManager.GetSelectedStation().GetItemsSO() != InventoryManager.GetInstance().GetWrappersSOList()[0])
+                NameTxt.text = assetManager.GetSelectedStation().GetItemsSO().ItemName;
+            else
+                NameTxt.text = InventoryManager.GetInstance().GetMostMultiplerWrapper().ItemName;
+
+        }
+
         if (RarityTxt)
         {
-            RarityTxt.text = assetManager.GetSelectedStation().GetItemsSO().GetRarityTxt();
-            RarityTxt.color = assetManager.GetRarityColor(assetManager.GetSelectedStation().GetItemsSO().Rarity);
+            if (assetManager.GetSelectedStation().GetItemsSO() != InventoryManager.GetInstance().GetWrappersSOList()[0])
+            {
+                RarityTxt.text = assetManager.GetSelectedStation().GetItemsSO().GetRarityTxt();
+                RarityTxt.color = assetManager.GetRarityColor(assetManager.GetSelectedStation().GetItemsSO().Rarity);
+            }
+            else
+            {
+                RarityTxt.text = InventoryManager.GetInstance().GetMostMultiplerWrapper().GetRarityTxt();
+                RarityTxt.color = assetManager.GetRarityColor(InventoryManager.GetInstance().GetMostMultiplerWrapper().Rarity);
+            }
         }
+
         if (IncomeTxt)
         {
             if (assetManager.GetSelectedStation().GetItemsSO() != InventoryManager.GetInstance().GetWrappersSOList()[0])
-                IncomeTxt.text = assetManager.GetSelectedStation().GetItemsSO().StartingIncome.ToString();
+                IncomeTxt.text = FinalPriceCalculation.GetInstance().CalculateModifierApplied(assetManager.GetSelectedStation().GetItemsSO()).ToString();
             else
-                IncomeTxt.text = "X" + assetManager.GetSelectedStation().GetItemsSO().multipler.ToString();
+                IncomeTxt.text = "X" + InventoryManager.GetInstance().GetMostMultiplerWrapper().multipler.ToString();
         }
 
     }

@@ -19,7 +19,6 @@ public class ShopManager : MonoBehaviour
 
     [Header("Other Shop Related Reference")]
     [SerializeField] Button PurchaseBtn;
-    [SerializeField] TextMeshProUGUI shopTypeDisplay;
     [SerializeField] GameObject ShopItemPrefab;
     [SerializeField] GameObject PurchaseFailedPopUp;
     private ShopItemButton currentShopItemButtonSelected;
@@ -100,10 +99,9 @@ public class ShopManager : MonoBehaviour
                 station.gameObject.SetActive(true);
                 OrderSystem.GetInstance().AddStationToList(station);
                 InventoryManager.GetInstance().AddFlowersSO(currentShopItemButtonSelected.GetItemsSO());
-
-                //OrderSystem.GetInstance().AddStationToList(station);
             }
-            else
+
+            else if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.WRAPPER)
             {
                 if (!runOnce)
                 {
@@ -152,7 +150,7 @@ public class ShopManager : MonoBehaviour
         {
             if (shopItemList[i].GetItemsSO() == rose)
             {
-                GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.FLOWER;
+                GetComponent<TabGroup>().ForceToFlower();
                 currentShopItemButtonSelected = shopItemList[i];
                 PurchaseInfo(true);
                 currentShopItemButtonSelected.Purchased();
@@ -160,7 +158,7 @@ public class ShopManager : MonoBehaviour
 
             else if (shopItemList[i].GetItemsSO() == wrapper)
             {
-                GetComponent<TabGroup>().selectedTab.shopType = SHOP_TYPE.WRAPPER;
+                GetComponent<TabGroup>().ForceToWrapper();
                 currentShopItemButtonSelected = shopItemList[i];
                 PurchaseInfo(true);
                 currentShopItemButtonSelected.Purchased();
@@ -202,6 +200,7 @@ public class ShopManager : MonoBehaviour
                 }
             }
 
+            GetComponent<TabGroup>().ForceToFlower();
             currentShopItemButtonSelected = null;
         }
     }

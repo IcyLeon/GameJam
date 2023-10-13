@@ -10,8 +10,9 @@ public class TabButton : MonoBehaviour
     public TabGroup tabgroup;
 
     public SHOP_TYPE shopType;
-    public GameObject itemContent;
+    public GameObject scrollViewRect;
     public Button itemTabButton;
+    [SerializeField] string shopNameDisplay;
 
     public void ButtonClicked()
     {
@@ -20,13 +21,18 @@ public class TabButton : MonoBehaviour
 
     public void SetInactive()
     {
-        itemContent.gameObject.SetActive(false);
+        scrollViewRect.gameObject.SetActive(false);
         itemTabButton.interactable = true;
     }
 
     public void SetActive()
     {
-        itemContent.gameObject.SetActive(true);
+        scrollViewRect.gameObject.SetActive(true);
         itemTabButton.interactable = false;
+    }
+
+    public string GetNameDisplay()
+    {
+        return shopNameDisplay;
     }
 }
