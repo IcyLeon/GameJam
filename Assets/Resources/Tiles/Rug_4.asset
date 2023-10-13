@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Ceiling_1
+  m_Name: Rug_4
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1283887968, guid: b89c0551071379948891b90f4dbe7520, type: 3}
+  m_Sprite: {fileID: 808044700, guid: 06b7789e96e0bc143a2caaeb91b25967, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
