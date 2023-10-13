@@ -111,6 +111,9 @@ public class NPC : MoveableObjects
             WorldText worldText = go.GetComponent<WorldText>();
             worldText.Init(value.ToString(), 1f, 0.65f, Color.yellow, Vector3.zero);
             worldText.MovingText(Vector3.up * 3f);
+
+            ParticleSystem particleSystem = Instantiate(AssetManager.GetInstance().ParticlesEffectBurst, transform).GetComponent<ParticleSystem>();
+            Destroy(particleSystem, particleSystem.main.duration);
         }
     }
 
