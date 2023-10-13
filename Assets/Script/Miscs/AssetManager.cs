@@ -37,6 +37,11 @@ public class AssetManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
+        if (JsonSaveFile.GetInstance() != null)
+        {
+            JsonSaveFile.GetInstance().LoadPlayerData();
+        }
     }
 
     public static AssetManager GetInstance()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class JsonSaveFile : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class JsonSaveFile : MonoBehaviour
         }
 
         data = new LoadedData();
-        LoadPlayerData();
     }
 
     public static JsonSaveFile GetInstance()
@@ -171,6 +171,7 @@ public class JsonSaveFile : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SavePlayerData();
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+            SavePlayerData();
     }
 }
