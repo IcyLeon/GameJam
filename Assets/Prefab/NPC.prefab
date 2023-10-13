@@ -134,6 +134,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 551606077023456141}
+  - {fileID: 179399062679325264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -204,6 +205,7 @@ MonoBehaviour:
   AnimatorController: {fileID: 7546988174285537421}
   moveableObjectsSO: {fileID: 11400000, guid: bbfebc024cdb6004093646631236152e, type: 2}
   offsetHeight: 0
+  playSound: {fileID: 3797405747797066832}
   canvasUI: {fileID: 2331017106369185605}
   ItemContainer: {fileID: 5376091848999067021}
   ItemSlotPrefab: {fileID: 5253593320662951990, guid: 6a114801019909647b28840a6d3098f3, type: 3}
@@ -366,3 +368,80 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.5
+--- !u!1001 &3783220253621922513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1619536011143108147}
+    m_Modifications:
+    - target: {fileID: 14542891423248001, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: AudioEnum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548344401335421679, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_Name
+      value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+--- !u!4 &179399062679325264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3962579130573693057, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+  m_PrefabInstance: {fileID: 3783220253621922513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3797405747797066832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 14542891423248001, guid: 53af4ab9c29aa4240a320699e0bfefc1, type: 3}
+  m_PrefabInstance: {fileID: 3783220253621922513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f026a4038808e3549bca0deb34de01f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

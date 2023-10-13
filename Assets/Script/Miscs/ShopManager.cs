@@ -18,7 +18,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] Button wrapperShopTabButton;
 
     [Header("Other Shop Related Reference")]
-    [SerializeField] Button PurchaseBtn;
+    [SerializeField] GameObject PurchaseBtn;
     [SerializeField] GameObject ShopItemPrefab;
     [SerializeField] GameObject PurchaseFailedPopUp;
     private ShopItemButton currentShopItemButtonSelected;
@@ -27,13 +27,15 @@ public class ShopManager : MonoBehaviour
     [SerializeField] GameObject DescriptionContent;
     [SerializeField] TextMeshProUGUI TitleTxt, DescTxt;
 
+
+    [SerializeField] PlaySound playSound;
     private bool runOnce;
 
     // Start is called before the first frame update
     void Start()
     {
         runOnce = false;
-        PurchaseBtn.onClick.AddListener(delegate
+        PurchaseBtn.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate
         {
             PurchaseInfo();
         }
@@ -92,6 +94,8 @@ public class ShopManager : MonoBehaviour
             if (!loadedIn)
                 InventoryManager.GetInstance().SubtractCoins(currentShopItemButtonSelected.GetOriginalCost());
 
+            playSound.SetAudioEnum(AudioEnum.PURCHASE_SUCCESS);
+
             if (GetComponent<TabGroup>().selectedTab.shopType == SHOP_TYPE.FLOWER)
             {
                 Station station = AssetManager.GetInstance().GetStation(currentShopItemButtonSelected.GetItemsSO());
@@ -116,9 +120,11 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
+            playSound.SetAudioEnum(AudioEnum.PURCHASE_FAIL);
             SetPopUpActive(true);
         }
-        PurchaseBtn.gameObject.SetActive(currentShopItemButtonSelected != null && !currentShopItemButtonSelected.isPurchased());
+        playSound.PlayAudio(playSound.GetAudioSource());
+        PurchaseBtn.SetActive(currentShopItemButtonSelected != null && !currentShopItemButtonSelected.isPurchased());
     }
 
     // core
